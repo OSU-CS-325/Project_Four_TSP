@@ -7,3 +7,16 @@
 
 # Jupyter Notebook related
 .ipynb_checkpoints/
+
+# LaTeX related
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.log
+*.run.xml
+
+# Report related (due to PDF renaming)
+main.pdf
+main.synctex.gz
