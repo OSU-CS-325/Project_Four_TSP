@@ -1,10 +1,30 @@
+#!/bin/bash
+ALG="braindeadTour"
+
 clear
 
-/usr/bin/python braindeadTour.py tsp_example_1.txt
-/usr/bin/python ../TSP_Files/tsp-verifier.py tsp_example_1.txt tsp_example_1.txt.tour
+INSTANCE="example"
+for NUM in {1..3}
+do
+	INFIL=tsp_${INSTANCE}_${NUM}.txt
+	if [ -f $INFIL ]
+		then
+		echo "running instance $INSTANCE #$NUM with the $ALG algorithm..."
+		/usr/bin/python ${ALG}.py $INFIL
+		/usr/bin/python ../TSP_Files/tsp-verifier.py $INFIL ${INFIL}.tour
+		echo "---------------------------------------------------------------"
+	fi
+done
 
-/usr/bin/python braindeadTour.py tsp_example_2.txt
-/usr/bin/python ../TSP_Files/tsp-verifier.py tsp_example_2.txt tsp_example_2.txt.tour
-
-/usr/bin/python braindeadTour.py tsp_example_3.txt
-/usr/bin/python ../TSP_Files/tsp-verifier.py tsp_example_3.txt tsp_example_3.txt.tour
+INSTANCE="competition"
+for NUM in {1..7}
+do
+	INFIL=tsp_${INSTANCE}_${NUM}.txt
+	if [ -f $INFIL ]
+		then
+		echo "running instance $INSTANCE #$NUM with the $ALG algorithm..."
+		/usr/bin/python ${ALG}.py $INFIL
+		/usr/bin/python ../TSP_Files/tsp-verifier.py $INFIL ${INFIL}.tour
+		echo "---------------------------------------------------------------"
+	fi
+done
