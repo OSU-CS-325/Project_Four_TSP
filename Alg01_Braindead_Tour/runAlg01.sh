@@ -1,7 +1,7 @@
 #!/bin/bash
-ALG="braindeadTour"
 
 clear
+ALG="braindeadTour"
 
 INSTANCE="example"
 for NUM in {1..3}
@@ -11,6 +11,7 @@ do
 		then
 		echo "running instance $INSTANCE #$NUM with the $ALG algorithm..."
 		/usr/bin/python ${ALG}.py $INFIL
+		echo "verifying results of $INSTANCE #$NUM with the $ALG algorithm..."
 		/usr/bin/python ../TSP_Files/tsp-verifier.py $INFIL ${INFIL}.tour
 		echo "---------------------------------------------------------------"
 	fi
@@ -24,6 +25,7 @@ do
 		then
 		echo "running instance $INSTANCE #$NUM with the $ALG algorithm..."
 		/usr/bin/python ${ALG}.py $INFIL
+		echo "verifying results of $INSTANCE #$NUM with the $ALG algorithm..."
 		/usr/bin/python ../TSP_Files/tsp-verifier.py $INFIL ${INFIL}.tour
 		echo "---------------------------------------------------------------"
 	fi
