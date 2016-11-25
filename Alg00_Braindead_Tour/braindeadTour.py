@@ -12,7 +12,7 @@ import sys
 
 # -----------------------------------------------------------------------------	
 def dist(cityOne, cityTwo):
- 	dx = cityOne['x'] - cityTwo['x']
+	dx = cityOne['x'] - cityTwo['x']
 	dy = cityOne['y'] - cityTwo['y']
 	dxSq = math.pow(dx, 2)
 	dySq = math.pow(dy, 2)
@@ -22,12 +22,12 @@ def dist(cityOne, cityTwo):
 def main():
 	# get input file name from command line
 	if (len(sys.argv) != 2):
-		print 'ERROR: Exactly one argument expected.  See usage instructions.\n'
+		print ('ERROR: Exactly one argument expected.  See usage instructions.\n')
 		quit()
 	else:
 		inFil = sys.argv[1]
-        if not(os.path.isfile(inFil)):
-			print 'ERROR: File \'' + str(inFil) + '\' not found.\n'
+		if not(os.path.isfile(inFil)):
+			print ('ERROR: File \'' + str(inFil) + '\' not found.\n')
 			quit()
 
 	# open input/output files

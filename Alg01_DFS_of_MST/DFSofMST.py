@@ -70,24 +70,23 @@ def dfs(adjList):
 	vstd = []
 	stack = []
 	stack.append(0)
-	print (stack)
+#	print (stack)
 
 	while(len(stack) > 0):
-		u = stack[0]
-		stack.remove(stack[0])
+		u = stack[len(stack) - 1]
+		stack.remove(stack[len(stack) - 1])
 		if not (u in vstd):
 			vstd.append(u)
 			auxStack = []
-			for v, dist in adjList[u].items():
+			for eachAdj in sorted(adjList[u].items(), key=lambda x: x[1], reverse=True):
+				v = eachAdj[0]
 				if not (v in vstd):
 					auxStack.append(v)
 			while len(auxStack) > 0:
 				v = auxStack[0]
 				stack.append(v)
 				auxStack.remove(v)
-			print (stack)
-	#for key, value in adjList.items():
-	#	print (key, value)
+#			print (stack)
 
 	return vstd
 
@@ -114,6 +113,7 @@ def main():
 		eachCity = eachLine.split()
 		thisCity = {'id':int(eachCity[0]), 'x':int(eachCity[1]), 'y':int(eachCity[2])}
 		cities.append(thisCity)
+#		print(thisCity)
 
 	# init adjacency matrix for graph (every city connected to every other city)
 	adjMatrix = [[0 for x in range(len(cities))] for y in range(len(cities))]
@@ -122,39 +122,46 @@ def main():
 			ij = dist(cities[i], cities[j])
 			adjMatrix[i][j] = ij
 			adjMatrix[j][i] = ij
-		print (adjMatrix[i])
+#		print (adjMatrix[i])
 	
 	# create minimum spanning tree (MST) using Prim's algorithm which is
 	# faster on dense graphs than Kruskal's algorithm - I consider my graph
 	# to be dense because every vertex (city) is connected to every other
 	mst = primsAlg(adjMatrix)
-	print (mst)
+#	print (mst)
 
 	# convert mst into adjacencyList
 	adjList = mstToAdjList(adjMatrix, mst)
-	print (adjList)
+#	print (adjList)
 
 	# get DFS discovered order
 	disc = dfs(adjList)
-	print (disc)	
+#	print (disc)	
 
 	# calc the total distance from city 0 to 1 to 2 to n-1 to n to 0
-#	totalDist = 0
-#	iterCities = iter(cities)
-#	prevCity = cities[0]
-#	next(iterCities) # skip the very first city
-#	for eachCity in iterCities:
+	totalDist = 0
+	iterCities = iter(disc)
+	prevCity = cities[disc[0]]
+	next(iterCities) # skip the very first city
+	for eachItem in iterCities:
+		eachCity = cities[eachItem]
 		# get distance to eachCity from the prevCity
-#		totalDist = totalDist + dist(eachCity, prevCity) 
-#		prevCity = eachCity
+#		print (eachCity)
+#		print (prevCity)
+		addDist = dist(eachCity, prevCity)
+		totalDist = totalDist + addDist 
+#		print ("%s: %s" % (addDist, totalDist))
+		prevCity = eachCity
 	# get distance from last city back to first city
-#	totalDist = totalDist + dist(prevCity, cities[0])
+	addDist = dist(prevCity, cities[disc[0]])
+	totalDist = totalDist + addDist 
+#	print ("%s: %s" % (addDist, totalDist))
 
 	# write output to file
-#	outFil.write(str(totalDist) + '\n')
-#	iterCities = iter(cities)
-#	for eachCity in iterCities:
-#		outFil.write(str(eachCity['id']) + '\n')
+	outFil.write(str(totalDist) + '\n')
+	iterCities = iter(disc)
+	for eachCity in iterCities:
+		outFil.write(str(eachCity) + '\n')
 
 	inFil.close()
 	outFil.close()
