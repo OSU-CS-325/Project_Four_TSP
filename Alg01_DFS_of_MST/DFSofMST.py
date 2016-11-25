@@ -34,6 +34,35 @@ def decreaseKey(prqu, cost):
 				prqu[i] = prqu[i] - prqu[j]
 
 # -----------------------------------------------------------------------------	
+class edge:
+	u = None # first vertex
+	v = None # second vertex
+	d = 0 # distance between vertices
+	def __init__(self, u, v, d):
+		self.u = u
+		self.v = v
+		self.d = d
+
+def kruskalsAlg(adjMatrix):
+	edges = []
+	for i in range(0, len(adjMatrix) - 1):
+		for j in range(i + 1, len(adjMatrix)):
+			e = edge(i, j, adjMatrix[i][j])
+			edges.append(e)		
+	edges.sort(key = lambda x: x.d)
+	
+	prev = [None for x in range(len(adjMatrix))]
+	vstd = []
+	for e in edges:
+#		print (str(e.d) + "," + str(e.u) + "," + str(e.v))
+		if (not(e.v in vstd)):
+			vstd.append(e.v)
+#			print (vstd)
+			prev[e.v] = e.u
+#			print (prev)
+	return prev
+
+# -----------------------------------------------------------------------------	
 def primsAlg(adjMatrix):
 	cost = [sys.maxsize for x in range(len(adjMatrix))]
 	prev = [None for x in range(len(adjMatrix))]
@@ -127,7 +156,9 @@ def main():
 	# create minimum spanning tree (MST) using Prim's algorithm which is
 	# faster on dense graphs than Kruskal's algorithm - I consider my graph
 	# to be dense because every vertex (city) is connected to every other
-	mst = primsAlg(adjMatrix)
+#	mst = primsAlg(adjMatrix)
+#	print (mst)
+	mst = kruskalsAlg(adjMatrix)
 #	print (mst)
 
 	# convert mst into adjacencyList
