@@ -19,105 +19,24 @@ def dist(cityOne, cityTwo):
 	return int(round(math.sqrt(dxSq + dySq)))
 
 # -----------------------------------------------------------------------------	
-def popMin(prqu):
-	minU = prqu[0]
-	prqu.remove(prqu[0])
-	return minU
-
-# -----------------------------------------------------------------------------	
-def decreaseKey(prqu, cost):
-	for i in range(len(prqu)):
-		for j in range(len(prqu)):
-			if cost[prqu[i]] < cost[prqu[j]]:
-				prqu[i] = prqu[i] + prqu[j]
-				prqu[j] = prqu[i] - prqu[j]
-				prqu[i] = prqu[i] - prqu[j]
-
-# -----------------------------------------------------------------------------	
-class edge:
-	u = None # first vertex
-	v = None # second vertex
-	d = 0 # distance between vertices
-	def __init__(self, u, v, d):
-		self.u = u
-		self.v = v
-		self.d = d
-
-def kruskalsAlg(adjMatrix):
-	edges = []
-	for i in range(0, len(adjMatrix) - 1):
-		for j in range(i + 1, len(adjMatrix)):
-			e = edge(i, j, adjMatrix[i][j])
-			edges.append(e)		
-	edges.sort(key = lambda x: x.d)
-	
-	prev = [None for x in range(len(adjMatrix))]
+def nearestNeighbor(adjMatrix, start):
 	vstd = []
-	for e in edges:
-#		print (str(e.d) + "," + str(e.u) + "," + str(e.v))
-		if (not(e.v in vstd)):
-			vstd.append(e.v)
-#			print (vstd)
-			prev[e.v] = e.u
-#			print (prev)
-	return prev
+	vstd.append(start)
+#	print (vstd)
+	u = start
 
-# -----------------------------------------------------------------------------	
-def primsAlg(adjMatrix):
-	cost = [sys.maxsize for x in range(len(adjMatrix))]
-	prev = [None for x in range(len(adjMatrix))]
-	prqu = [x for x in range(len(adjMatrix))]
-
-	cost[0] = 0
-	decreaseKey(prqu, cost)
-
-	while len(prqu) > 0:
-		u = popMin(prqu)
-
-		for v in [v for v in range(len(adjMatrix)) if adjMatrix[u][v] > 0 and u != v]:
-			dist = adjMatrix[u][v]
-			if v in prqu and dist < cost[v]:
-				prev[v] = u
-				cost[v] = dist
-				decreaseKey(prqu, cost)
-
-	return prev
-
-# -----------------------------------------------------------------------------	
-def mstToAdjList(adjMatrix, mst):
-	adjList = {}
-	for i in range(0, len(adjMatrix)):
-		adjV = {}
-		for j in range(0, len(mst)):
-			if i == mst[j]:
-				adjV[j] = adjMatrix[i][j]
-		adjList[i] = adjV
-	return adjList
-
-# -----------------------------------------------------------------------------	
-def dfs(adjList):
-	vstd = []
-	stack = []
-	stack.append(0)
-#	print (stack)
-
-	while(len(stack) > 0):
-		u = stack[len(stack) - 1]
-		stack.remove(stack[len(stack) - 1])
-		if not (u in vstd):
-			vstd.append(u)
-			auxStack = []
-			for eachAdj in sorted(adjList[u].items(), key=lambda x: x[1], reverse=True):
-				v = eachAdj[0]
-				if not (v in vstd):
-					auxStack.append(v)
-			while len(auxStack) > 0:
-				v = auxStack[0]
-				stack.append(v)
-				auxStack.remove(v)
-#			print (stack)
-
-	return vstd
+	while len(vstd) < len(adjMatrix):
+		dist = sys.maxsize
+		next = -1
+		for v in range(len(adjMatrix)):
+			if adjMatrix[u][v] < dist and not v in vstd:
+				next = v
+				dist = adjMatrix[u][v]
+		vstd.append(next)
+#		print (vstd)
+		u = next
+		
+	return vstd 
 
 # -----------------------------------------------------------------------------	
 def main():
@@ -153,44 +72,42 @@ def main():
 			adjMatrix[j][i] = ij
 #		print (adjMatrix[i])
 	
-	# create minimum spanning tree (MST) using Prim's algorithm which is
-	# faster on dense graphs than Kruskal's algorithm - I consider my graph
-	# to be dense because every vertex (city) is connected to every other
-#	mst = primsAlg(adjMatrix)
-#	print (mst)
-	mst = kruskalsAlg(adjMatrix)
-#	print (mst)
+	# get tour order
+	minDist = sys.maxsize
+	minTour = []
+	for i in range(0, len(adjMatrix)):
+		tourAdjMatrix = [x[:] for x in adjMatrix]
+		tour = nearestNeighbor(tourAdjMatrix, i)
+#		print (tour)	
 
-	# convert mst into adjacencyList
-	adjList = mstToAdjList(adjMatrix, mst)
-#	print (adjList)
-
-	# get DFS discovered order
-	disc = dfs(adjList)
-#	print (disc)	
-
-	# calc the total distance from city 0 to 1 to 2 to n-1 to n to 0
-	totalDist = 0
-	iterCities = iter(disc)
-	prevCity = cities[disc[0]]
-	next(iterCities) # skip the very first city
-	for eachItem in iterCities:
-		eachCity = cities[eachItem]
-		# get distance to eachCity from the prevCity
-#		print (eachCity)
-#		print (prevCity)
-		addDist = dist(eachCity, prevCity)
+	 	# calc the total distance from city 0 to 1 to 2 to n-1 to n to 0
+		totalDist = 0
+		iterCities = iter(tour)
+		prevCity = cities[tour[0]]
+		next(iterCities) # skip the very first city
+		for eachItem in iterCities:
+			eachCity = cities[eachItem]
+			# get distance to eachCity from the prevCity
+#			print (eachCity)
+#			print (prevCity)
+			addDist = dist(eachCity, prevCity)
+			totalDist = totalDist + addDist 
+#			print ("%s: %s" % (addDist, totalDist))
+			prevCity = eachCity
+		# get distance from last city back to first city
+		addDist = dist(prevCity, cities[tour[0]])
 		totalDist = totalDist + addDist 
 #		print ("%s: %s" % (addDist, totalDist))
-		prevCity = eachCity
-	# get distance from last city back to first city
-	addDist = dist(prevCity, cities[disc[0]])
-	totalDist = totalDist + addDist 
-#	print ("%s: %s" % (addDist, totalDist))
+#		print (totalDist)
+		if totalDist < minDist:
+			minTour = []
+			minDist = totalDist
+			for j in range(0, len(adjMatrix)):
+				minTour.append(tour[j])
 
 	# write output to file
-	outFil.write(str(totalDist) + '\n')
-	iterCities = iter(disc)
+	outFil.write(str(minDist) + '\n')
+	iterCities = iter(minTour)
 	for eachCity in iterCities:
 		outFil.write(str(eachCity) + '\n')
 
