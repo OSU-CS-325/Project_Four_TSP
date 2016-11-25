@@ -1,0 +1,65 @@
+-----------------------------------------------------------
+use case: example 1
+-----------------------------------------------------------
+
+input size:               76
+optimal tour length:      108159
+
+algorithm:                braindead tour
+tour length:              150781
+len/opt len:              1.39
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0667
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              139725
+len/opt len:              1.29
+runtime(d:hh:mm:ss.ssss): 0:00:00:01.4073
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              141813
+len/opt len:              1.31
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.1616
+
+-----------------------------------------------------------
+use case: example 2
+-----------------------------------------------------------
+
+input size:               280
+optimal tour length:      2579
+
+algorithm:                braindead tour
+tour length:              2808
+len/opt len:              1.09
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0671
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              3819
+len/opt len:              1.48
+runtime(d:hh:mm:ss.ssss): 0:00:01:27.5504
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              3890
+len/opt len:              1.51
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.7930
+
+-----------------------------------------------------------
+use case: example 3
+-----------------------------------------------------------
+
+input size:               15112
+optimal tour length:      1573084
+
+algorithm:                braindead tour
+tour length:              112310765
+len/opt len:              71.40
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.2477
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
