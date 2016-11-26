@@ -23,7 +23,7 @@ runtime(d:hh:mm:ss.ssss): 0:00:00:00.1616
 algorithm:                nearest neighbor 
 tour length:              130921
 len/opt len:              1.21
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.5604
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.2948
 
 -----------------------------------------------------------
 use case: example 2
@@ -50,7 +50,7 @@ runtime(d:hh:mm:ss.ssss): 0:00:00:00.7930
 algorithm:                nearest neighbor 
 tour length:              2975
 len/opt len:              1.15
-runtime(d:hh:mm:ss.ssss): 0:00:00:19.0564
+runtime(d:hh:mm:ss.ssss): 0:00:00:04.4363
 
 -----------------------------------------------------------
 use case: example 3
@@ -75,7 +75,7 @@ len/opt len:              1.88
 runtime(d:hh:mm:ss.ssss): 0:11:46:52.8194
 
 algorithm:                nearest neighbor 
-tour length:              DNF
-len/opt len:              DNF
+tour length:              1934200
+len/opt len:              1.25
 runtime(d:hh:mm:ss.ssss): DNF
 

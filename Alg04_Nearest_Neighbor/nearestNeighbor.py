@@ -33,7 +33,7 @@ def main():
 	# open input/output files
 	base = os.path.basename(inFil)
 	inFil = open(base, 'r')
-	outFil = open(base + '.tour', 'w')
+	# outFil = open(base + '.tour', 'w')
 
 	# get cities from input file into a list
 	cities = []
@@ -42,6 +42,7 @@ def main():
 		thisCity = {'id':int(eachCity[0]), 'x':int(eachCity[1]), 'y':int(eachCity[2])}
 		cities.append(thisCity)
 #		print(thisCity)
+	inFil.close()
 
 	# init adjacency matrix for graph (every city connected to every other city)
 	adjMatrix = [[-1 for x in range(len(cities))] for y in range(len(cities))]
@@ -50,7 +51,7 @@ def main():
 	minTourDist = sys.maxsize
 	minTourOrder = []
 	for i in range(0, len(cities)):
-		print("start at: " + str(i))
+#		print("starting at: " + str(i))
 		tourCities = [x for x in cities]
 		tourOrder = []
 		tourOrder.append(tourCities[i]['id'])
@@ -58,6 +59,8 @@ def main():
 		tourCities.remove(tourCities[i])
 		tourDist = 0
 		while len(tourCities) > 0:
+#			if len(tourCities) % 1000 == 0:
+#				print (str(len(tourCities)))
 			# find closest city
 			thisCity = cities[tourOrder[len(tourOrder) - 1]]
 #			print("thisCity: " + str(thisCity))
@@ -80,21 +83,32 @@ def main():
 #			print("tourOrder: " + str(tourOrder))
 			tourCities.remove(minCity)
 			tourDist = tourDist + minDist
-		tourDist = tourDist + dist(cities[tourOrder[0]], cities[tourOrder[len(tourOrder) - 1]])
+
+		u = cities[tourOrder[0]]['id']
+		v = cities[tourOrder[len(tourOrder) - 1]]['id']
+		thisDist = adjMatrix[u][v]
+		if thisDist == -1:
+			thisDist = dist(cities[tourOrder[0]], cities[tourOrder[len(tourOrder) - 1]])
+			adjMatrix[u][v] = thisDist
+			adjMatrix[v][u] = thisDist
+			
+		tourDist = tourDist + thisDist
 #		print("tourOrder: " + str(tourOrder))
-#		print("thisDist:" + str(tourDist))
+#		print("starting at: " + str(i) + " thisDist:" + str(tourDist))
 		if tourDist < minTourDist:
+			print("starting at: " + str(i) + " thisDist:" + str(tourDist))
 			minTourDist = tourDist
 			minTourOrder = [x for x in tourOrder]
 
-	# write output to file
-	outFil.write(str(minTourDist) + '\n')
-	iterCities = iter(minTourOrder)
-	for eachCity in iterCities:
-		outFil.write(str(eachCity) + '\n')
-
-	inFil.close()
-	outFil.close()
+			# write output to file
+			outFil = open(base + '.tour', 'w')
+			outFil.write(str(minTourDist) + '\n')
+			iterCities = iter(minTourOrder)
+			for eachCity in iterCities:
+				outFil.write(str(eachCity) + '\n')
+			outFil.close()
+		else:
+			print("starting at: " + str(i))
 
 # -----------------------------------------------------------------------------	
 if __name__ == "__main__":
