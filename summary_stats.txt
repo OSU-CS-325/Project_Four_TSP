@@ -70,9 +70,9 @@ len/opt len:              DNF
 runtime(d:hh:mm:ss.ssss): DNF
 
 algorithm:                depth first search of minimum spanning true (found with kruskal's) 
-tour length:              DNF
-len/opt len:              DNF
-runtime(d:hh:mm:ss.ssss): DNF
+tour length:              2955932
+len/opt len:              1.88
+runtime(d:hh:mm:ss.ssss): 0:11:46:52.8194
 
 algorithm:                nearest neighbor 
 tour length:              DNF
