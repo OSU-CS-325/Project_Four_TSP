@@ -6,6 +6,7 @@
 # Usage:                From the command line type the following...
 #                       /usr/bin/python braindeadTour.py inputFileName.txt
 
+import datetime
 import math
 import os
 import sys
@@ -96,7 +97,7 @@ def main():
 #		print("tourOrder: " + str(tourOrder))
 #		print("starting at: " + str(i) + " thisDist:" + str(tourDist))
 		if tourDist < minTourDist:
-			print("starting at: " + str(i) + " thisDist:" + str(tourDist))
+			print(str(datetime.datetime.now()) + " starting at: " + str(i) + " thisDist:" + str(tourDist))
 			minTourDist = tourDist
 			minTourOrder = [x for x in tourOrder]
 
@@ -108,7 +109,7 @@ def main():
 				outFil.write(str(eachCity) + '\n')
 			outFil.close()
 		else:
-			print("starting at: " + str(i))
+			print(str(datetime.datetime.now()) + " starting at: " + str(i))
 
 # -----------------------------------------------------------------------------	
 if __name__ == "__main__":

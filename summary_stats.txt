@@ -75,7 +75,7 @@ len/opt len:              1.88
 runtime(d:hh:mm:ss.ssss): 0:11:46:52.8194
 
 algorithm:                nearest neighbor 
-tour length:              1934200
-len/opt len:              1.25
+tour length:              1917269
+len/opt len:              1.22
 runtime(d:hh:mm:ss.ssss): DNF
 
