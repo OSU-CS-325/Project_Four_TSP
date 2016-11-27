@@ -47,8 +47,10 @@ int main(int argc, char *argv[]){
 	// Start with a simple in order tour
 	tour_length = create_in_order_tour(adj_matrix, tour_order, num_pts);
 
+	char dummyName[] = "dumb_tour.txt.tour";
+
 	// Write simple tour to file
-	write_tour_to_file(fname_out, tour_order, num_pts, tour_length);
+	write_tour_to_file(dummyName, tour_order, num_pts, tour_length);
 
 	tsp_2opt_search(adj_matrix, tour_order, &tour_length, fname_out, num_pts);
 

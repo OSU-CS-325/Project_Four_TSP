@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
+#include <stdbool.h>
 #include "tsp_lib.h"
+
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 int** tsp_input_to_adj_matrix(FILE *input_file, int *num_pts) {
 
@@ -72,19 +77,16 @@ int compute_euclidean_distance(int x1, int y1, int x2, int y2) {
 
 int create_in_order_tour(int **adj_matrix, int *tour, int num_pts) {
 
-	// Start with first city, loop through
+	// Start with first city, loop through in order
 	tour[0] = 0;
-	int tour_length = 0;
 	int num_in_tour = 1;
 
 	while (num_in_tour < num_pts) {
 		tour[num_in_tour] = num_in_tour;
-		tour_length += adj_matrix[num_in_tour - 1][num_in_tour];
 		num_in_tour += 1;
 	}
 
-	// Add distance back to first city
-	tour_length += adj_matrix[num_in_tour - 1][tour[0]];
+	int tour_length = tsp_compute_tour_distance(adj_matrix, tour, num_pts);
 
 	return tour_length;
 }
@@ -109,13 +111,11 @@ void write_tour_to_file(char *fname_out, int *tour, int num_pts, int tour_length
 	}
 }
 
-void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, fname_out, num_pts) {
+void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, char *fname_out, int num_pts) {
 	
 	bool improved = true;
-	int original_tour[num_pts];
 	int new_tour[num_pts];
 	int new_tour_length = 0;
-	memcpy(original_tour, tour, sizeof(int) * num_pts);
 
 	while (improved) {
 		improved = false;
@@ -123,13 +123,19 @@ void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, fname_out, n
 
 		for (int i = 1; i < num_pts - 1 && !exit_early; i++) {
 			for (int j = i + 1; j < num_pts && !exit_early; j++) {
-				 tsp_2opt_swap(new_tour, tour, original_tour[i], original_tour[k])
+				 tsp_2opt_swap(new_tour, tour, num_pts, i, j);
 				 new_tour_length = tsp_compute_tour_distance(adj_matrix, new_tour, num_pts);
 				 if (new_tour_length < *tour_length) {
+				 	// make tour the improved tour
 				 	*tour_length = new_tour_length;
 				 	memcpy(tour, new_tour, sizeof(int) * num_pts);
+
+				 	// note that we improved, jump out early
 				 	improved = true;
 				 	exit_early = true;
+
+				 	// write the improved tour to file
+				 	write_tour_to_file(fname_out, tour, num_pts, *tour_length);
 				 }
 			}
 		}
@@ -139,10 +145,41 @@ void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, fname_out, n
 
 //compute tour distance
 int tsp_compute_tour_distance(int **adj_matrix, int *tour, int num_pts) {
-	return 0;
+	int tour_length = 0;
+
+	// Add distance from tour[i] to tour[i+1] to tour length
+	for (int i = 0; i < num_pts - 1; i++) {
+		tour_length += adj_matrix[tour[i]][tour[i+1]];
+	}
+
+	// Add final distance from tour[end] to tour[0]
+	tour_length += adj_matrix[tour[num_pts - 1]][tour[0]];
+
+	return tour_length;
 }
 
 //swap nodeA and nodeB in route order
-void tsp_2opt_swap(int *new_tour, int *tour, int nodeA, int nodeB) {
+void tsp_2opt_swap(int *new_tour, int *tour, int num_pts, int nodeA, int nodeB) {
+	
+	int min_node = MIN(nodeA, nodeB);
+	int max_node = MAX(nodeA, nodeB);
+	int new_tour_idx = 0;
 
+	// route from 1 to min_node - 1, in order
+	for (int i = 0; i < min_node; i++) {
+		new_tour[new_tour_idx] = tour[i];
+		new_tour_idx++;
+	}
+
+	// route from min_node to max_node, in reverse order
+	for (int i = max_node; i >= min_node; i--) {
+		new_tour[new_tour_idx] = tour[i];
+		new_tour_idx++;
+	}
+
+	// route from max_node + 1 to end, in order
+	for (int i = max_node + 1; i < num_pts; i++) {
+		new_tour[new_tour_idx] = tour[i];
+		new_tour_idx++;
+	}
 }
