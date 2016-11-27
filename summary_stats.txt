@@ -89,3 +89,7 @@ tour length:              1917269
 len/opt len:              1.22
 runtime(d:hh:mm:ss.ssss): DNF
 
+algorithm:                2-OPT
+tour length:              59588399
+len/opt len:              37.88
+runtime(d:hh:mm:ss.ssss): 0:00:21:00.0000 (check in prior to running overnight)
