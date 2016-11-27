@@ -17,4 +17,7 @@ int tsp_compute_tour_distance(int **adj_matrix, int *tour, int num_pts);
 
 void tsp_2opt_swap(int *new_tour, int *tour, int num_pts, int nodeA, int nodeB);
 
+void tsp_2opt_swap_efficient(int **adj_matrix, int *tour, int *tour_length,
+ int num_pts, int nodeA, int nodeB);
+
 #endif

@@ -114,8 +114,7 @@ void write_tour_to_file(char *fname_out, int *tour, int num_pts, int tour_length
 void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, char *fname_out, int num_pts) {
 	
 	bool improved = true;
-	int new_tour[num_pts];
-	int new_tour_length = 0;
+	int old_tour_length = *tour_length;
 
 	while (improved) {
 		improved = false;
@@ -123,13 +122,9 @@ void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, char *fname_
 
 		for (int i = 1; i < num_pts - 1 && !exit_early; i++) {
 			for (int j = i + 1; j < num_pts && !exit_early; j++) {
-				 tsp_2opt_swap(new_tour, tour, num_pts, i, j);
-				 new_tour_length = tsp_compute_tour_distance(adj_matrix, new_tour, num_pts);
-				 if (new_tour_length < *tour_length) {
-				 	// make tour the improved tour
-				 	*tour_length = new_tour_length;
-				 	memcpy(tour, new_tour, sizeof(int) * num_pts);
-
+				old_tour_length = *tour_length;
+				tsp_2opt_swap_efficient(adj_matrix, tour, tour_length, num_pts, i, j);
+				if (*tour_length < old_tour_length) {
 				 	// note that we improved, jump out early
 				 	improved = true;
 				 	exit_early = true;
@@ -182,4 +177,64 @@ void tsp_2opt_swap(int *new_tour, int *tour, int num_pts, int nodeA, int nodeB) 
 		new_tour[new_tour_idx] = tour[i];
 		new_tour_idx++;
 	}
+}
+
+// swap nodeA and nodeB in route order, if it will help the path
+// returns updated tour length (or same tour length if no swap)
+void tsp_2opt_swap_efficient(int **adj_matrix, int *tour, int *tour_length,
+ int num_pts, int nodeA, int nodeB) {
+	
+	int min_node = MIN(nodeA, nodeB);
+	int max_node = MAX(nodeA, nodeB);
+	int new_tour_idx = 0;
+
+	int removed_path_length = 0;
+	int added_path_length = 0;
+
+	int new_tour[num_pts];
+
+	// The segments that would be removed -- careful to wrap endpoint if necessary
+	if (max_node + 1 < num_pts) {
+		removed_path_length = adj_matrix[tour[min_node-1]][tour[min_node]] + 
+		adj_matrix[tour[max_node]][tour[max_node + 1]];
+
+		added_path_length = adj_matrix[tour[min_node-1]][tour[max_node]] + 
+		adj_matrix[tour[min_node]][tour[max_node + 1]];
+	} else {
+		removed_path_length = adj_matrix[tour[min_node-1]][tour[min_node]] + 
+		adj_matrix[tour[max_node]][tour[0]];
+
+		added_path_length = adj_matrix[tour[min_node-1]][tour[max_node]] + 
+		adj_matrix[tour[min_node]][tour[0]];
+	}
+
+	int path_delta = removed_path_length - added_path_length;
+
+	// Only re-compute the tour if it makes sense to (we found a shorter path)
+	if (path_delta > 0) {
+		// route from 1 to min_node - 1, in order
+		for (int i = 0; i < min_node; i++) {
+			new_tour[new_tour_idx] = tour[i];
+			new_tour_idx++;
+		}
+
+		// route from min_node to max_node, in reverse order
+		for (int i = max_node; i >= min_node; i--) {
+			new_tour[new_tour_idx] = tour[i];
+			new_tour_idx++;
+		}
+
+		// route from max_node + 1 to end, in order
+		for (int i = max_node + 1; i < num_pts; i++) {
+			new_tour[new_tour_idx] = tour[i];
+			new_tour_idx++;
+		}
+
+		// move updated tour into tour array
+		memcpy(tour, new_tour, sizeof(int) * num_pts);
+
+		*tour_length -= path_delta;
+	}
+
+	return;
 }
