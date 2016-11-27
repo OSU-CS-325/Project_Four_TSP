@@ -25,6 +25,11 @@ tour length:              130921
 len/opt len:              1.21
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.2948
 
+algorithm:                2-OPT
+tour length:              112898
+len/opt len:              1.04
+runtime(d:hh:mm:ss.ssss): 0:00:00:0.0268
+
 -----------------------------------------------------------
 use case: example 2
 -----------------------------------------------------------
@@ -51,6 +56,11 @@ algorithm:                nearest neighbor
 tour length:              2975
 len/opt len:              1.15
 runtime(d:hh:mm:ss.ssss): 0:00:00:04.4363
+
+algorithm:                2-OPT
+tour length:              2770
+len/opt len:              1.07
+runtime(d:hh:mm:ss.ssss): 0:00:00:0.0898
 
 -----------------------------------------------------------
 use case: example 3
