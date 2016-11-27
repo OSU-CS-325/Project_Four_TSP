@@ -50,13 +50,7 @@ int main(int argc, char *argv[]){
 	// Write simple tour to file
 	write_tour_to_file(fname_out, tour_order, num_pts, tour_length);
 
-	// Track the best tour we've found so far
-	int best_tour[num_pts];
-	memcpy(best_tour, tour_order, num_pts * sizeof(int));
-	int best_tour_length = tour_length;
-
-	tsp_2opt_search(adj_matrix, tour_order, tour_length, best_tour, &best_tour_length, 
-		fname_out, num_pts);
+	tsp_2opt_search(adj_matrix, tour_order, &tour_length, fname_out, num_pts);
 
 	// Clean up
 	tsp_cleanup(adj_matrix);

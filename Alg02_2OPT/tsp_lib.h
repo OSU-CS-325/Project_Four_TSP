@@ -11,9 +11,10 @@ int create_in_order_tour(int **adj_matrix, int *tour, int num_pts);
 
 void write_tour_to_file(char *fname_out, int *tour, int num_pts, int tour_length);
 
-void tsp_2opt_search(int **adj_matrix, int *tour, int tour_length, int *best_tour,
- int *best_tour_length, char *fname_out, int num_pts);
+void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, fname_out, num_pts);
 
 int tsp_compute_tour_distance(int **adj_matrix, int *tour, int num_pts);
+
+void tsp_2opt_swap(int *new_tour, int *tour, int nodeA, int nodeB);
 
 #endif
