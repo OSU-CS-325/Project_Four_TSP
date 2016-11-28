@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <limits.h>
 #include <stdbool.h>
 #include "tsp_lib.h"
 
@@ -52,7 +53,7 @@ int** tsp_input_to_adj_matrix(FILE *input_file, int *num_pts) {
 	// TODO: Optimize based on the fact that it's a symmetric matrix
 	for (int i = 0; i < *num_pts; i++) {
 		for (int j = 0; j < *num_pts; j++) {
-			adj_matrix[i][j] = compute_euclidean_distance(x_array[i], y_array[i],
+			adj_matrix[i][j] = tsp_compute_euclidean_distance(x_array[i], y_array[i],
 			 x_array[j], y_array[j]);
 		}
 	}
@@ -68,14 +69,14 @@ void tsp_cleanup(int **adj_matrix) {
 	free(adj_matrix);
 }
 
-int compute_euclidean_distance(int x1, int y1, int x2, int y2) {
+int tsp_compute_euclidean_distance(int x1, int y1, int x2, int y2) {
 	double dx = x2 - x1;
 	double dy = y2 - y1;
 	double dist = sqrt(dx*dx + dy*dy);
 	return (int) round(dist);
 }
 
-int create_in_order_tour(int **adj_matrix, int *tour, int num_pts) {
+int tsp_create_in_order_tour(int **adj_matrix, int *tour, int num_pts) {
 
 	// Start with first city, loop through in order
 	tour[0] = 0;
@@ -91,7 +92,7 @@ int create_in_order_tour(int **adj_matrix, int *tour, int num_pts) {
 	return tour_length;
 }
 
-void write_tour_to_file(char *fname_out, int *tour, int num_pts, int tour_length) {
+void tsp_write_tour_to_file(char *fname_out, int *tour, int num_pts, int tour_length) {
 	// Open output file for writing
 	FILE *output_file = fopen(fname_out, "w");
 	if (!output_file) {
@@ -130,7 +131,7 @@ void tsp_2opt_search(int **adj_matrix, int *tour, int *tour_length, char *fname_
 				 	exit_early = true;
 
 				 	// write the improved tour to file
-				 	write_tour_to_file(fname_out, tour, num_pts, *tour_length);
+				 	tsp_write_tour_to_file(fname_out, tour, num_pts, *tour_length);
 				 }
 			}
 		}
@@ -237,4 +238,110 @@ void tsp_2opt_swap_efficient(int **adj_matrix, int *tour, int *tour_length,
 	}
 
 	return;
+}
+
+int tsp_create_nearest_neighbor_tour(int **adj_matrix, int *tour, int num_pts) {
+	
+	// Determine how many attempts we will give it due to time constraints
+	int num_iter = (num_pts <= 1000) ? num_pts : 10;
+
+	// Keep track of best tour in int *tour, current tour in another array
+	int cur_tour[num_pts];
+	int cur_tour_length = 0;
+	int best_tour_length = INT_MAX;
+	int starting_city;
+
+	// Create array to track whether a city is included yet or not (1/0)
+	// and another for whether or not we've tried starting there before
+	int city_in_tour[num_pts];
+	int tried_as_starting_city[num_pts];
+
+	int num_in_tour = 0;
+	int prev_city = 0;
+
+	int closest_distance = INT_MAX;
+	int closest_city = num_pts; // will seg fault if I screw up
+
+	for (int i = 0; i < num_pts; i++) {
+		tried_as_starting_city[i] = 0;
+	}
+
+	for (int i = 0; i < num_iter; i++) {
+
+		// Reset our city in tour array
+		for (int j = 0; j < num_pts; j++) {
+			city_in_tour[j] = 0;
+		}
+
+		// Reset distances and closest city
+		closest_distance = INT_MAX;
+		closest_city = num_pts; // will seg fault if I screw up
+
+		// Pick a random city to start with
+		starting_city = rand_interval(0, num_pts - 1);
+		while (tried_as_starting_city[starting_city]) {
+			starting_city = rand_interval(0, num_pts - 1);
+		}
+
+		// Mark that we've tried this as a starting city for future reference
+		tried_as_starting_city[starting_city] = 1;
+		// Mark that it's in the tour
+		city_in_tour[starting_city] = 1;	
+
+		cur_tour[0] = starting_city;
+		cur_tour_length = 0;
+		
+		num_in_tour = 1;		
+
+		while (num_in_tour < num_pts) {
+			// Start at previous entry in tour, find nearest neighbor
+			prev_city = cur_tour[num_in_tour - 1];
+
+			for (int k = 0; k < num_pts; k++) {
+				if (!city_in_tour[k] && adj_matrix[prev_city][k] < closest_distance) {
+					closest_distance = adj_matrix[prev_city][k];
+					closest_city = k;
+				}
+			}
+
+			// Add closest city to tour
+			cur_tour[num_in_tour] = closest_city;
+			cur_tour_length += closest_distance;
+			city_in_tour[closest_city] = 1;
+			num_in_tour += 1;
+
+			// Reset search values
+			closest_distance = INT_MAX;
+			closest_city = num_pts; // will seg fault if I screw up
+		}
+
+		// Add distance back to starting city
+		cur_tour_length += adj_matrix[cur_tour[0]][cur_tour[num_pts-1]];
+
+		// See if this is our best tour, if so, keep it
+		if (cur_tour_length < best_tour_length) {
+			best_tour_length = cur_tour_length;
+			memcpy(tour, cur_tour, sizeof(int) * num_pts);
+		}
+	}	
+
+	return best_tour_length;
+}
+
+//from http://stackoverflow.com/questions/2509679/how-to-generate-a-random-number-from-within-a-range
+unsigned int rand_interval(unsigned int min, unsigned int max) {
+    int r;
+    const unsigned int range = 1 + max - min;
+    const unsigned int buckets = RAND_MAX / range;
+    const unsigned int limit = buckets * range;
+
+    /* Create equal size buckets all in a row, then fire randomly towards
+     * the buckets until you land in one of them. All buckets are equally
+     * likely. If you land off the end of the line of buckets, try again. */
+    do
+    {
+        r = rand();
+    } while (r >= limit);
+
+    return min + (r / buckets);
 }

@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "tsp_lib.h"
 
 int main(int argc, char *argv[]){
+
+	// Seed random number generator
+	srand ( time(NULL) );
 	
 	// Verify only one input argument was provided, otherwise exit with error
 	if (argc != 2) {
@@ -45,12 +49,13 @@ int main(int argc, char *argv[]){
 	int tour_order[num_pts];
 
 	// Start with a simple in order tour
-	tour_length = create_in_order_tour(adj_matrix, tour_order, num_pts);
+	// tour_length = tsp_create_in_order_tour(adj_matrix, tour_order, num_pts);
+	tour_length = tsp_create_nearest_neighbor_tour(adj_matrix, tour_order, num_pts);
 
 	char dummyName[] = "dumb_tour.txt.tour";
 
 	// Write simple tour to file
-	write_tour_to_file(dummyName, tour_order, num_pts, tour_length);
+	tsp_write_tour_to_file(dummyName, tour_order, num_pts, tour_length);
 
 	tsp_2opt_search(adj_matrix, tour_order, &tour_length, fname_out, num_pts);
 
