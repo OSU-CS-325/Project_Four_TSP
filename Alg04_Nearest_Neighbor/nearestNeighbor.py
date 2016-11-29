@@ -108,8 +108,8 @@ def main():
 			for eachCity in iterCities:
 				outFil.write(str(eachCity) + '\n')
 			outFil.close()
-		else:
-			print(str(datetime.datetime.now()) + " starting at: " + str(i))
+#		else:
+#			print(str(datetime.datetime.now()) + " starting at: " + str(i))
 
 # -----------------------------------------------------------------------------	
 if __name__ == "__main__":
