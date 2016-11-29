@@ -117,9 +117,9 @@ len/opt len:              ????
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
 
 algorithm:                nearest neighbor 
-tour length:              ????
+tour length:              5911
 len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0808
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              ????
@@ -149,9 +149,9 @@ len/opt len:              ????
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
 
 algorithm:                nearest neighbor 
-tour length:              ????
+tour length:              8011
 len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.2705
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              ????
@@ -181,9 +181,9 @@ len/opt len:              ????
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
 
 algorithm:                nearest neighbor 
-tour length:              ????
+tour length:              14826
 len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+runtime(d:hh:mm:ss.ssss): 0:00:00:03.6776
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              ????
@@ -213,9 +213,9 @@ len/opt len:              ????
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
 
 algorithm:                nearest neighbor 
-tour length:              ????
+tour length:              19711
 len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+runtime(d:hh:mm:ss.ssss): 0:00:00:24.9158
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              ????
@@ -237,7 +237,7 @@ runtime(d:hh:mm:ss.ssss): 0:00:00:00.0687
 algorithm:                depth first search of minimum spanning true (found with prim's) 
 tour length:              DNF
 len/opt len:              DNF
-runtime(d:hh:mm:ss.ssss): DNF
+runtime(d:hh:mm:ss.ssss): DNF 
 
 algorithm:                depth first search of minimum spanning true (found with kruskal's) 
 tour length:              ????
@@ -245,9 +245,9 @@ len/opt len:              ????
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
 
 algorithm:                nearest neighbor 
-tour length:              ????
+tour length:              27128
 len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              ????
@@ -277,9 +277,9 @@ len/opt len:              ????
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
 
 algorithm:                nearest neighbor 
-tour length:              ????
+tour length:              39834
 len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              ????
@@ -309,9 +309,9 @@ len/opt len:              ????
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
 
 algorithm:                nearest neighbor 
-tour length:              ????
+tour length:              62110
 len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              ????
