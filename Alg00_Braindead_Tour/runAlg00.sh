@@ -4,7 +4,7 @@ clear
 ALG="braindeadTour"
 
 INSTANCE="example"
-for NUM in {1..3}
+for NUM in {0..0}
 do
 	INFIL=tsp_${INSTANCE}_${NUM}.txt
 	if [ -f $INFIL ]
@@ -27,10 +27,10 @@ do
 	fi
 done
 
-INSTANCE="competition"
+INSTANCE="test-input-"
 for NUM in {1..7}
 do
-	INFIL=tsp_${INSTANCE}_${NUM}.txt
+	INFIL=${INSTANCE}${NUM}.txt
 	if [ -f $INFIL ]
 		then
 		echo "running instance $INSTANCE #$NUM with the $ALG algorithm..."
