@@ -99,7 +99,7 @@ use case: test (competition) 1
 -----------------------------------------------------------
 
 input size:               50
-optimal tour length:      ????
+optimal tour length:      5333 (from Concorde)
 
 algorithm:                braindead tour
 tour length:              27301
@@ -113,12 +113,12 @@ runtime(d:hh:mm:ss.ssss): DNF
 
 algorithm:                depth first search of minimum spanning true (found with kruskal's) 
 tour length:              8397
-len/opt len:              ????
+len/opt len:              1.57
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0546
 
 algorithm:                nearest neighbor 
 tour length:              5911
-len/opt len:              ????
+len/opt len:              1.11
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0808
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
