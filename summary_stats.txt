@@ -103,7 +103,7 @@ optimal tour length:      5333 (from Concorde)
 
 algorithm:                braindead tour
 tour length:              27301
-len/opt len:              ????
+len/opt len:              5.12
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0636
 
 algorithm:                depth first search of minimum spanning true (found with prim's) 
@@ -131,11 +131,11 @@ use case: test (competition) 2
 -----------------------------------------------------------
 
 input size:               100
-optimal tour length:      ????
+optimal tour length:      7384 (from Concorde)
 
 algorithm:                braindead tour
 tour length:              48053
-len/opt len:              ????
+len/opt len:              6.51
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0631
 
 algorithm:                depth first search of minimum spanning true (found with prim's) 
@@ -145,12 +145,12 @@ runtime(d:hh:mm:ss.ssss): DNF
 
 algorithm:                depth first search of minimum spanning true (found with kruskal's) 
 tour length:              12681
-len/opt len:              ????
+len/opt len:              1.72
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0768
 
 algorithm:                nearest neighbor 
 tour length:              8011
-len/opt len:              ????
+len/opt len:              1.08
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.2705
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
