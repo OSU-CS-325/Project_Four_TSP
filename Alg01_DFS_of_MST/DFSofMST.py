@@ -1,8 +1,8 @@
 # Program:              DFSofMST.py
 # Author:               OSU Fa16 CS325-400 Project Group 12
-# Description:          Really bad TSP algorithm.  No logic whatsoever
-#                       other than to go to each destination in the order
-#                       originally provided.
+# Description:          TSP algorithm that first finds the minimum spanning tree
+#                       using Kruskal's algorithm and then performs a
+#                       depth-first search on the MST to define the tour.
 # Usage:                From the command line type the following...
 #                       /usr/bin/python DFSofMST.py inputFileName.txt
 
