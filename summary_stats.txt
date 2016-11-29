@@ -93,3 +93,227 @@ algorithm:                2-OPT w/ Nearest Neighbor initial tour
 tour length:              1675756
 len/opt len:              1.065
 runtime(d:hh:mm:ss.ssss): 0:06:39:16.6653
+
+-----------------------------------------------------------
+use case: test (competition) 1
+-----------------------------------------------------------
+
+input size:               50
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              27301
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0636
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                nearest neighbor 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+-----------------------------------------------------------
+use case: test (competition) 2
+-----------------------------------------------------------
+
+input size:               100
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              48053
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0631
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                nearest neighbor 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+-----------------------------------------------------------
+use case: test (competition) 3
+-----------------------------------------------------------
+
+input size:               250
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              123877
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0639
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                nearest neighbor 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+-----------------------------------------------------------
+use case: test (competition) 4
+-----------------------------------------------------------
+
+input size:               500
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              247675
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0667
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                nearest neighbor 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+-----------------------------------------------------------
+use case: test (competition) 5
+-----------------------------------------------------------
+
+input size:               1000
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              48053
+len/opt len:              522297
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0687
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                nearest neighbor 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+-----------------------------------------------------------
+use case: test (competition) 6
+-----------------------------------------------------------
+
+input size:               2000
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              1050395
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0762
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                nearest neighbor 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+-----------------------------------------------------------
+use case: test (competition) 7
+-----------------------------------------------------------
+
+input size:               5000
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              2580008
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0938
+
+algorithm:                depth first search of minimum spanning true (found with prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (found with kruskal's) 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                nearest neighbor 
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
