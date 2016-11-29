@@ -1,10 +1,10 @@
-# Program:              braindeadTour.py
+# Program:              DFSofMST.py
 # Author:               OSU Fa16 CS325-400 Project Group 12
 # Description:          Really bad TSP algorithm.  No logic whatsoever
 #                       other than to go to each destination in the order
 #                       originally provided.
 # Usage:                From the command line type the following...
-#                       /usr/bin/python braindeadTour.py inputFileName.txt
+#                       /usr/bin/python DFSofMST.py inputFileName.txt
 
 import math
 import os
