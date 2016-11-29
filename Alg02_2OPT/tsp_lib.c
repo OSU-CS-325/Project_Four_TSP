@@ -243,7 +243,7 @@ void tsp_2opt_swap_efficient(int **adj_matrix, int *tour, int *tour_length,
 int tsp_create_nearest_neighbor_tour(int **adj_matrix, int *tour, int num_pts) {
 	
 	// Determine how many attempts we will give it due to time constraints
-	int num_iter = (num_pts <= 1000) ? num_pts : 10;
+	int num_iter = (num_pts <= 2001) ? num_pts : 10;
 
 	// Keep track of best tour in int *tour, current tour in another array
 	int cur_tour[num_pts];

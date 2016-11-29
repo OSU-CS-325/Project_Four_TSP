@@ -52,12 +52,15 @@ int main(int argc, char *argv[]){
 	// tour_length = tsp_create_in_order_tour(adj_matrix, tour_order, num_pts);
 	tour_length = tsp_create_nearest_neighbor_tour(adj_matrix, tour_order, num_pts);
 
-	char dummyName[] = "dumb_tour.txt.tour";
+	// char dummyName[] = "dumb_tour.txt.tour";
 
 	// Write simple tour to file
-	tsp_write_tour_to_file(dummyName, tour_order, num_pts, tour_length);
+	// tsp_write_tour_to_file(dummyName, tour_order, num_pts, tour_length);
 
 	tsp_2opt_search(adj_matrix, tour_order, &tour_length, fname_out, num_pts);
+
+	// Write optimal tour to file
+	tsp_write_tour_to_file(fname_out, tour_order, num_pts, tour_length);
 
 	// Clean up
 	tsp_cleanup(adj_matrix);
