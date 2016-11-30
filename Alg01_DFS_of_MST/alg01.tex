@@ -16,9 +16,100 @@ A brief discussion of why you chose this algorithm.
 \subsection*{Algorithm Pseudo-code}
 
 \begin{verbatim}
-if (fast_way)
-  your pseudo_code here
-  return
-\end{verbatim}
+DFSofMST()
+    cities = []
+    read date from file into cities[] // each city has id, x, and y attributes
 
+    adjMatrix=[len(cities)][len(cities)]
+    for i = 0 to len(cities) - 1
+        for j = i + 1 to len(cities)
+            ij = dist(cities[i][j])
+            adjMatrix[i][j] = ij
+            adjMatrix[i][j] = ji
+
+    mst = kruskalsAlg(adjMatrix)
+    adjList = mstToAdjList(adjMatrix, mst)
+    disc = dfs(adjList)
+
+    totalDist = 0
+    prevCity = cities[disc[0]]
+    for i = 1 to len(disc)
+        eachCity = cities[disc[i]]
+        addDist = dist(eachCity, prevCity)
+        totalDist += addDist
+        prevCity = eachCity
+    addDist = dist(prevCity, cities[disc[0]])
+    totalDist += addDist
+
+    write totalDist to file
+    write contents of disc[] to file // 1 item per line
+
+dist(cityOne, cityTwo)
+    dx = cityOne['x'] - cityTwo['x']
+    dy = cityOne['y'] - cityTwo['y']
+    dxSq = dx ^ 2
+    dySq = dy ^ 2
+    return ((dxSq + dySq) ^ 0.5)
+
+dfs(adjList)
+    vstd = []
+    stack = []
+    stack.append(0)
+
+    while(len(stack) > 0)
+        u = stack[len(stack) - 1]
+        stack.remove(stack[len(stack) - 1])
+        if not (u in vstd)
+            vstd.append(u)
+            auxStack = []
+            for eachAdj in reverse_sorted(adjList[u].items()):
+                v = eachAdj[0]
+                if not (v in vstd):
+                    auxStack.append(v)
+            while len(auxStack) > 0
+                v = auxStack[0]
+                stack.append(v)
+                auxStack.remove(v)
+
+    return vstd   
+
+mstToAdjList(adjMatrix, mst)
+    adjList = {}
+    for i = 0 to len(adjMatrix)
+        adjV = {}
+        for j = 0 to len(mst)
+            if i == mst[j]
+                adjV[j] = adjMatrix[i][j]
+        adjList[i] = adjV
+    return adjList
+
+popMin(prqu)
+    minU = prqu[0]
+    prqu.remove(prqu[0])
+    return minU
+
+decreaseKey(prqu, cost)
+    for i = 0 to len(prqu)
+        for j = 0 to len(prqu)
+            if cost[prqu[i]] < cost[prqu[j]]
+                prqu[i] = prqu[i] + prqu[j]
+                prqu[j] = prqu[i] - prqu[j]
+                prqu[i] = prqu[i] - prqu[j]
+
+def kruskalsAlg(adjMatrix)
+    edges = []
+    for i = 0 to len(adjMatrix) - 1
+        for j = i + 1 to len(adjMatrix)
+            e = edge(i, j, adjMatrix[i][j])
+            edges.append(e)		
+    edges.sort(key = lambda x: x.d)
+	
+    prev = [None for x in range(len(adjMatrix))]
+    vstd = []
+    for e in edges:
+        if (not(e.v in vstd))
+            vstd.append(e.v)
+            prev[e.v] = e.u
+    return prev
+\end{verbatim}
 \end{document}
