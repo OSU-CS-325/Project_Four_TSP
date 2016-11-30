@@ -2,16 +2,14 @@
  
 \begin{document}
 
-These sections are the minimum of what we need to cover based on the Project 4 guidelines. Feel free to add additional sections!
-
 % The asterix after \subsection disables section numbering
 \subsection*{Algorithm Description}
 
-A description of the algorithm, and a summary of the research performed. I'd like to recommend we use BibTeX here to keep track of our sources, and make referencing easy. In the report directory, you'll find a \verb|report.bib| file. In that file, you can add your sources. Then to cite a source, you use the \verb|\cite{citationName}| command. Check out the section titled ``3 Bibliography management with Bibtex" in the referenced website to see how it works. \cite{bibtex} References appear at the end of the report PDF.
+We learned about the minimum spanning tree heuristic from a discussion in ~\cite{skiena/2008}.  The concept is to find the minimum spanning tree (MST).  Then the tour order is set by the discovery order while performing a depth first search (DFS) on the minimum spanning tree.
 
 \subsection*{Algorithm Discussion}
 
-A brief discussion of why you chose this algorithm.
+We implemented this algorithm because it seemed relatively simple.  This this implementation we used Python 3.5.  At first we implement Prim's algorithm to find the MST but we found it to be too slow.  Therefore, we switched to using Kruskal's algorithm to find the MST which provided a better running time of O(n lg n).  Finally, according to ~\cite{skiena/2008}, this heuristic is typically 15\% to 20\ over optimal in practice.  Unfortunately, while it was decently fast for smaller input sizes, it was inefficent for very large input sizes (n $\geq$ 5000).  Also, for the three example cases it didn't provide the expected results relative to optimal.  Depending on the case the route found was 31\% to 88\% worse than optimal. 
 
 \subsection*{Algorithm Pseudo-code}
 
