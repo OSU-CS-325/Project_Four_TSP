@@ -11,3 +11,6 @@ biber main
 latex main
 pdflatex main
 mv main.pdf Project4_Group12_report.pdf
+
+# Clean up after ourselves
+rm main.aux main.bbl main.bcf main.blg main.dvi main.log main.run.xml
