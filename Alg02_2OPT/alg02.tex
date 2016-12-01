@@ -7,7 +7,7 @@ These sections are the minimum of what we need to cover based on the Project 4 g
 % The asterix after \subsection disables section numbering
 \subsection*{Algorithm Description}
 
-A description of the algorithm, and a summary of the research performed. I'd like to recommend we use BibTeX here to keep track of our sources, and make referencing easy. In the report directory, you'll find a \verb|report.bib| file. In that file, you can add your sources. Then to cite a source, you use the \verb|\cite{citationName}| command. Check out the section titled ``3 Bibliography management with Bibtex" in the referenced website to see how it works. \cite{bibtex} References appear at the end of the report PDF.
+The 2-opt algorithm is a simple local search algorithm that has application to solve the traveling salesman problem. The main idea behind it is to take a route that crosses over itself and reorder that route so that it no longer overlaps. We encountered this algorithm through it's Wikipedia article \url{https://en.wikipedia.org/wiki/2-opt}.
 
 \subsection*{Algorithm Discussion}
 
@@ -16,9 +16,8 @@ A brief discussion of why you chose this algorithm.
 \subsection*{Algorithm Pseudo-code}
 
 \begin{verbatim}
-if (fast_way)
-  your pseudo_code here
-  return
+TSP_TO_ADJMATRIX(Input file):
+    Reads the input file and generates an adjan
 \end{verbatim}
 
 \end{document}
