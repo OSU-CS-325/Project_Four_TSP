@@ -37,6 +37,24 @@ TSP_CREATE_IN_ORDER_TOUR(adj_matrix, tour, num_pts):
 
     return tour_length
 
+TSP_2OPT_SEARCH(adj_matrix, tour, tour_length, file_name, num_pts):
+    improved = true
+    old_tour_length = tour_length
+
+    while improved:
+        improved = false
+        exit_early = false
+
+        for i = 1 to num_pts - 1 and not exit_early:
+            for j = i + 1 to num_pts - 1 and not exit_early:
+                old_tour_length = tour_length
+                TSP_2OPT_SWAP_EFFICIENT(adj_matrix, tour, tour_length, num_pts, i, j)
+                if tour_length < old_tour_length:
+                    improved = true
+                    exit_early = true
+
+                    write the improved tour to file
+
 TSP_COMPUTE_TOUR_DISTANCE(adj_matrix, tour, num_pts):
     tour_length = 0
 
@@ -165,7 +183,18 @@ TSP_CREATE_NEAREST_NEIGHBOR_TOUR(adj_matrix, tour, num_pts):
     return best_tour_length
 
 MAIN():
-    
+    input_file = read the text file containing the graph information
+    num_pts = 0
+    adj_matrix = TSP_INPUT_TO_ADJ_MATRIX(input_file, num_pts)
+
+    tour_length = 0
+    tour_order[num_pts]
+
+    tour_length = TSP_CREATE_NEAREST_NEIGHBOR_TOUR(adj_matrix, tour_order, num_pts)
+
+    TSP_2OPT_SEARCH(adj_matrix, tour_order, tour_length, output_filename, num_pts)
+    TSP_WRITE_TOUR_TO_FILE(output_filename, tour_order, num_pts, tour_length)
+    TSP_CLEANUP(adj_matrix)
 \end{verbatim}
 
 \end{document}
