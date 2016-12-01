@@ -2,23 +2,40 @@
  
 \begin{document}
 
-These sections are the minimum of what we need to cover based on the Project 4 guidelines. Feel free to add additional sections!
-
 % The asterix after \subsection disables section numbering
 \subsection*{Algorithm Description}
 
-A description of the algorithm, and a summary of the research performed. I'd like to recommend we use BibTeX here to keep track of our sources, and make referencing easy. In the report directory, you'll find a \verb|report.bib| file. In that file, you can add your sources. Then to cite a source, you use the \verb|\cite{citationName}| command. Check out the section titled ``3 Bibliography management with Bibtex" in the referenced website to see how it works. \cite{bibtex} References appear at the end of the report PDF.
+This algorithm is called braindead tour because it requires little to no thinking.  It simply goes from city 1 to city 2 to ... to city n as ordered in the input file.
 
 \subsection*{Algorithm Discussion}
 
-A brief discussion of why you chose this algorithm.
+This algorithm was implemented early on just as a way to test file I/O and to understand the provided helper programs such as tsp-verifier.  No real research was done for this algorithm because it wasn't considered a serious solution, but we are including it in this report for completeness.  For this implementation we used Python 3.5.  The algorithm calculates and sums the distances between each city in the order they exist in the input file (plus distance from the last city back to the first).  It runs very quickly in O(n) time.  The efficiency of the algorithm in terms of calculated tour vs optimal is entirely dependent on the ordering of the cities in the input file.  For the three example cases provide we saw routes as good as 9\% over optimal and as bad as 71 times optimal.
 
 \subsection*{Algorithm Pseudo-code}
 
 \begin{verbatim}
-if (fast_way)
-  your pseudo_code here
-  return
-\end{verbatim}
+braindeadTour()
+    cities = []
+    read date from file into cities[] // each city has id, x, and y attributes
 
+    totalDist = 0
+    prevCity = cities[disc[0]]
+    for i = 1 to len(cities)
+        eachCity = cities[i]
+        addDist = dist(eachCity, prevCity)
+        totalDist += addDist
+        prevCity = eachCity
+    addDist = dist(prevCity, cities[disc[0]])
+    totalDist += addDist
+
+    write totalDist to file
+    write contents of disc[] to file // 1 item per line
+
+dist(cityOne, cityTwo)
+    dx = cityOne['x'] - cityTwo['x']
+    dy = cityOne['y'] - cityTwo['y']
+    dxSq = dx ^ 2
+    dySq = dy ^ 2
+    return ((dxSq + dySq) ^ 0.5)
+\end{verbatim}
 \end{document}
