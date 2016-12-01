@@ -13,6 +13,14 @@ The 2-opt algorithm is a simple local search algorithm that has application to s
 
 A brief discussion of why you chose this algorithm.
 
+I chose this algorithm because:
+\begin{itemize}
+	\item It was conceptually easy to implement
+	\item It is relatively efficient to compute the path improvement for a given path swap, which means it can be run quickly
+	\item Our other algorithms were constructive, while 2-OPT is a local search heuristic (it improves upon an existing path)
+	\item Related to above, this means we can combine 2-OPT with an efficient constructive algorithm (nearest neighbor in this case)
+\end{itemize}
+
 \subsection*{Algorithm Pseudo-code}
 
 \begin{verbatim}
