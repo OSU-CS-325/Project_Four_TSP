@@ -53,13 +53,14 @@ int main(int argc, char *argv[]){
 		tour_length = tsp_create_nearest_neighbor_tour_seeded(adj_matrix, tour_order,
 		 num_pts, i);
 
-		//perform 2-OPT on our nearest-neighbor tour
+		// perform 2-OPT on our nearest-neighbor tour
 		tsp_2opt_search(adj_matrix, tour_order, &tour_length, fname_out, num_pts);
 
-		//if it's the best we've seen, save it
+		// if it's the best we've seen, save it and write it out
 		if (tour_length < best_tour_length) {
 			best_tour_length = tour_length;
 			memcpy(best_tour, tour_order, sizeof(int) * num_pts);
+			tsp_write_tour_to_file(fname_out, best_tour, num_pts, best_tour_length);
 		}
 	}
 
@@ -74,7 +75,7 @@ int main(int argc, char *argv[]){
 
 	// tsp_2opt_search(adj_matrix, tour_order, &tour_length, fname_out, num_pts);
 
-	// Write optimal tour to file
+	// Write final optimal tour to file
 	tsp_write_tour_to_file(fname_out, best_tour, num_pts, best_tour_length);
 
 	// Clean up
