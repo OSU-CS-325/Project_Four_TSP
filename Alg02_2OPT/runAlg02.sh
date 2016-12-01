@@ -28,7 +28,7 @@ do
 done
 
 INSTANCE="test-input-"
-for NUM in {0..0}
+for NUM in {1..7}
 do
 	INFIL=${INSTANCE}${NUM}.txt
 	if [ -f $INFIL ]
@@ -52,7 +52,7 @@ do
 done
 
 INSTANCE="test-input-"
-for NUM in {1..7}
+for NUM in {0..0}
 do
 	INFIL=${INSTANCE}${NUM}.txt
 	if [ -f $INFIL ]
