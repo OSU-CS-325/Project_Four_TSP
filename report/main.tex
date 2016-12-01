@@ -54,6 +54,326 @@ maybe put the raw data from our summary stats here?  or maybe just the results t
 \subfile{../Alg04_Nearest_Neighbor/alg04.tex}
 
 \newpage
+\section*{Summary Stats: Example 1}
+\begin{verbatim}
+input size:               76
+optimal tour length:      108159
+
+algorithm:                braindead tour
+tour length:              150781
+len/opt len:              1.39
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0667
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              139725
+len/opt len:              1.29
+runtime(d:hh:mm:ss.ssss): 0:00:00:01.4073
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              141813
+len/opt len:              1.31
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.1616
+
+algorithm:                nearest neighbor 
+tour length:              130921
+len/opt len:              1.21
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.2948
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              112947
+len/opt len:              1.04
+runtime(d:hh:mm:ss.ssss): 0:00:00:0.0213
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Example 2}
+\begin{verbatim}
+input size:               280
+optimal tour length:      2579
+
+algorithm:                braindead tour
+tour length:              2808
+len/opt len:              1.09
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0671
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              3819
+len/opt len:              1.48
+runtime(d:hh:mm:ss.ssss): 0:00:01:27.5504
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              3890
+len/opt len:              1.51
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.7930
+
+algorithm:                nearest neighbor 
+tour length:              2975
+len/opt len:              1.15
+runtime(d:hh:mm:ss.ssss): 0:00:00:04.4363
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              2741
+len/opt len:              1.06
+runtime(d:hh:mm:ss.ssss): 0:00:00:0.1146
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Example 3}
+\begin{verbatim}
+input size:               15112
+optimal tour length:      1573084
+
+algorithm:                braindead tour
+tour length:              112310765
+len/opt len:              71.40
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.2477
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              2955932
+len/opt len:              1.88
+runtime(d:hh:mm:ss.ssss): 0:11:46:52.8194
+
+algorithm:                nearest neighbor 
+tour length:              1917269
+len/opt len:              1.22
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              1675756
+len/opt len:              1.065
+runtime(d:hh:mm:ss.ssss): 0:06:39:16.6653
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Test/Competition 1}
+\begin{verbatim}
+input size:               50
+optimal tour length:      5333 (from Concorde)
+
+algorithm:                braindead tour
+tour length:              27301
+len/opt len:              5.12
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0636
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              8397
+len/opt len:              1.57
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0546
+
+algorithm:                nearest neighbor 
+tour length:              5911
+len/opt len:              1.11
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0808
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Test/Competition 2}
+\begin{verbatim}
+input size:               100
+optimal tour length:      7384 (from Concorde)
+
+algorithm:                braindead tour
+tour length:              48053
+len/opt len:              6.51
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0631
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              12681
+len/opt len:              1.72
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0768
+
+algorithm:                nearest neighbor 
+tour length:              8011
+len/opt len:              1.08
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.2705
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Test/Competition 3}
+\begin{verbatim}
+input size:               250
+optimal tour length:      12067
+
+algorithm:                braindead tour
+tour length:              123877
+len/opt len:              10.27
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0639
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              21611
+len/opt len:              1.79
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.3322
+
+algorithm:                nearest neighbor 
+tour length:              14826
+len/opt len:              1.23
+runtime(d:hh:mm:ss.ssss): 0:00:00:03.6776
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Test/Competition 4}
+\begin{verbatim}
+input size:               500
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              247675
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0667
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              31483
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:01.8154
+
+algorithm:                nearest neighbor 
+tour length:              19711
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:24.9158
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Test/Competition 5}
+\begin{verbatim}
+input size:               1000
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              48053
+len/opt len:              522297
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0687
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF 
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              44272
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:10.8341
+
+algorithm:                nearest neighbor 
+tour length:              27128
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Test/Competition 6}
+\begin{verbatim}
+input size:               2000
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              1050395
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0762
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              61594
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:01:24.4163
+
+algorithm:                nearest neighbor 
+tour length:              39834
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+\end{verbatim}
+
+\newpage
+\section*{Summary Stats: Test/Competition 7}
+\begin{verbatim}
+input size:               5000
+optimal tour length:      ????
+
+algorithm:                braindead tour
+tour length:              2580008
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0938
+
+algorithm:                depth first search of minimum spanning true (prim's) 
+tour length:              DNF
+len/opt len:              DNF
+runtime(d:hh:mm:ss.ssss): DNF
+
+algorithm:                depth first search of minimum spanning true (kruskal's) 
+tour length:              DFN
+len/opt len:              DFN
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit (no results generated)
+
+algorithm:                nearest neighbor 
+tour length:              62110
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
+
+algorithm:                2-OPT w/ Nearest Neighbor initial tour
+tour length:              ????
+len/opt len:              ????
+runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+\end{verbatim}
+
+\newpage
 \printbibliography
 
 \end{document}
