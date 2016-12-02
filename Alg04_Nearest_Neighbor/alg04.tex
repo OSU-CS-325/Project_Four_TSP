@@ -5,11 +5,11 @@
 % The asterix after \subsection disables section numbering
 \subsection*{Algorithm Description}
 
-This algorithm starts the salesman at a random city in the tour and repeatedly visits the nearest city until all have been visited. We implemented this algorithm in Python 3.5. We researched the algorithm both on Wikipedia \url{https://en.wikipedia.org/wiki/Nearest_neighbour_algorithm} and by referring to The Algorithm Design Manual ~\cite{skiena/2008}.
+This algorithm starts the salesman at a random city in the tour and repeatedly visits the nearest city until all have been visited. We implemented this algorithm in Python 3.5.  We first encountered the nearest neighbor algorithm when researching general TSP algorithms at ~\cite{wikipedia/TSP} and learned more through it's Wikipedia article ~\cite{wikipedia/NN}.
 
 \subsection*{Algorithm Discussion}
 
-We chose nearest neighbor because it is essentially greedy which makes a good choice for being efficient and quick. We found that this algorithm satisfies the 1.25 requirement for most cases.
+We chose nearest neighbor because it is essentially greedy which makes a good choice for being efficient and quick. We found that this algorithm satisfies the 1.25 requirement for most cases.  Additionally, because it runs "fairly" fast for most input sizes, we were able to set it up to try each possible starting point.  For larger input sizes we had the algorithm write results every time it found a newer/better route.  This allowed us to find an acceptable route under 3 minutes (though there may have been better routes with unlimited time).  For the three example cases 2-opt found routes between 15\% and 22\% over optimal.  The algorithm runs in O($n^2$) time.
 
 \subsection*{Algorithm Pseudo-code}
 

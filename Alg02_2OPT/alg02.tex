@@ -5,11 +5,11 @@
 % The asterix after \subsection disables section numbering
 \subsection*{Algorithm Description}
 
-The 2-opt algorithm is a simple local search algorithm that has application to solve the traveling salesman problem. The main idea behind it is to take a route that crosses over itself and reorder that route so that it no longer overlaps. We encountered this algorithm through it's Wikipedia article \url{https://en.wikipedia.org/wiki/2-opt}.
+The 2-opt algorithm is a simple local search algorithm that has application to solve the Traveling Salesman Problem. The main idea behind it is to take a route that crosses over itself and reorder that route so that it no longer overlaps. We first encountered K-optimal tours in ~\cite{skiena/2008} and learned more through it's Wikipedia article ~\cite{wikipedia/2-opt}.  This is the only algorithm which we implemented in C.  We chose C over Python for the speed improvement.
 
 \subsection*{Algorithm Discussion}
 
-We decided on this algorithm because it was easy to implement conceptually. Also the algorithm is relatively efficient to compute the path improvement for a given path swap which provides for a favorable runtime. The other algorithms we wrote up were constructive while 2-OPT is a local search heuristic meaning it improves on an exisiting path. Because 2-OPT is a local search heuristic it needs to be combined with an efficient constructive algorithm which we choose nearest neighbor.
+We decided on this algorithm because it was easy to implement conceptually, it's fairly fast, and it provides the most optimum tour lengths of any algorithm we implemented. Also the algorithm is relatively efficient to compute the path improvement for a given path swap which provides for a favorable runtime. The other algorithms we wrote up were constructive while 2-OPT is a local search heuristic meaning it improves on an exisiting path.  Because 2-OPT is a local search heuristic it needs to be combined with an efficient constructive algorithm which we choose nearest neighbor.  For the three example cases 2-opt found routes between 4\% and 6\% over optimal.
 
 \subsection*{Algorithm Pseudo-code}
 

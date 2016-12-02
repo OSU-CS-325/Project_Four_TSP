@@ -25,17 +25,15 @@
 \section*{Summary}
 \subsection*{Problem Statement}
 
-what was the basic deal with the project
+The purpose of the project was research and implement algorithms for the Traveling Salesman Problem.  We were provided 10 total instances (sets of cities and their corresponding x,y coordinates) as were to devise agorithms that could solve for fast and/or optimal tours.  Our goal was to find algorithms for all 10 instances that calculated tour lengths of no worse than 25\% of the optimal tour lengths.  Additionally, for a subset of the instance we were targeting solutions in 3 minutes or less.  For 3 of the (example) instances, we were given the optimal tour lengths.  For the other 7 (competition/test) instances, we approximated the optimal tour lengths using Concorde (DO NOT TURN IT WITHOUT REFERENCING WHERE WE FOUND CONCORDE).
 
 \subsection*{Algorithms Researched/Implemented}
 
-what were the four algorithms we implemented - which one did we ultimately use (2-opt)
-why did we select them?
-what research did we do?
+Our research included Google searches and readings of various texts such as ~\cite{cormen/2009} and ~\cite{skiena/2008}.  See the bibliography for a full list of references.  Ultimately we ended up implementing four different algorithm in Python or C.  These were an algorithm we called the braindead tour, nearest neighbor, depth first search of the minimum spanning tree, and 2-opt.  Details and pseudocode for each implementation can be found in the following pages.
 
 \subsection*{Results}
 
-maybe put the raw data from our summary stats here?  or maybe just the results that we are turning in from 2-opt
+Complete results (runtimes and calculate tours) for each instance for each algorithm can be found in the last pages of this document.  We found that certain algorithms were fast and that others provided answers under that 25\% threshold, but it was ultimately our 2-opt algorithm that provided the best combination of the two.  It is for this algorithm that we submitted competition results.
 
 \newpage
 \section*{Algorithm: Braindead Tour}
