@@ -5,11 +5,11 @@
 % The asterix after \subsection disables section numbering
 \subsection*{Algorithm Description}
 
-We learned about the minimum spanning tree heuristic from a discussion in ~\cite{skiena/2008}.  The concept is to find the minimum spanning tree (MST).  Then the tour order is set by the discovery order while performing a depth first search (DFS) on the minimum spanning tree.
+We learned about the minimum spanning tree heuristic from a discussion in ~\cite{skiena_2008}.  The concept is to find the minimum spanning tree (MST).  Then the tour order is set by the discovery order while performing a depth first search (DFS) on the minimum spanning tree.
 
 \subsection*{Algorithm Discussion}
 
-We implemented this algorithm because it seemed relatively simple.  For this implementation we used Python 3.5.  At first we implement Prim's algorithm to find the MST but we found it to be too slow.  Therefore, we switched to using Kruskal's algorithm to find the MST which provided a better running time of O(n lg n).  Finally, according to ~\cite{skiena/2008}, this heuristic is typically 15\% to 20\ over optimal in practice.  Unfortunately, while it was decently fast for smaller input sizes, it was inefficent for very large input sizes (n $\geq$ 5000).  Also, for the three example cases it didn't provide the expected results relative to optimal.  Depending on the case the route found was 31\% to 88\% worse than optimal. 
+We implemented this algorithm because it seemed relatively simple.  For this implementation we used Python 3.5.  At first we implement Prim's algorithm to find the MST but we found it to be too slow.  Therefore, we switched to using Kruskal's algorithm to find the MST which provided a better running time of O(n lg n).  Finally, according to ~\cite{skiena_2008}, this heuristic is typically 15\% to 20\ over optimal in practice.  Unfortunately, while it was decently fast for smaller input sizes, it was inefficent for very large input sizes (n $\geq$ 5000).  Also, for the three example cases it didn't provide the expected results relative to optimal.  Depending on the case the route found was 31\% to 88\% worse than optimal. 
 
 \subsection*{Algorithm Pseudo-code}
 
