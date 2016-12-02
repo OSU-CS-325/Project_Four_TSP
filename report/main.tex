@@ -21,66 +21,66 @@
 \begin{document}
 \maketitle
 
-\newpage
-\section*{Summary}
-\subsection*{Problem Statement}
+% \newpage
+% \section*{Summary}
+% \subsection*{Problem Statement}
 
-The purpose of the project was to research and implement algorithms for the Traveling Salesman Problem (TSP). We were provided 10 total problem instances, which consisted of numbered cities and their corresponding x,y coordinates. The goal was to devise agorithms that discover solve tours to visit each city exactly once and return to the originating city. Additionally, these tours should be found quickly (or efficiently). Our goal was to implement algorithms that, for all 10 problem instances, calculated tour lengths of no worse than 25\% of the optimal tour lengths.  Additionally, for a subset of the problem instances, we were to discover feasible solutions in 3 minutes or less.  For three of the problem instances (example problem set), we were given the optimal tour lengths.  For the other seven problem instances (competition problem set), we used Concorde to approximate the optimal tour lengths.\cite{concorde}
+% The purpose of the project was to research and implement algorithms for the Traveling Salesman Problem (TSP). We were provided 10 total problem instances, which consisted of numbered cities and their corresponding x,y coordinates. The goal was to devise agorithms that discover solve tours to visit each city exactly once and return to the originating city. Additionally, these tours should be found quickly (or efficiently). Our goal was to implement algorithms that, for all 10 problem instances, calculated tour lengths of no worse than 25\% of the optimal tour lengths.  Additionally, for a subset of the problem instances, we were to discover feasible solutions in 3 minutes or less.  For three of the problem instances (example problem set), we were given the optimal tour lengths.  For the other seven problem instances (competition problem set), we used Concorde to approximate the optimal tour lengths.\cite{concorde}
 
-\subsection*{Algorithms Researched/Implemented}
+% \subsection*{Algorithms Researched/Implemented}
 
-Our research included Google searches regarding TSP algorithms, and readings of various texts such as ~\cite{cormen_2009} and ~\cite{skiena_2008}.  See the bibliography at the conclusion of this report for a full list of references.  Ultimately, we implemented four different algorithms in Python or C.  We will call these algorithms: braindead tour, nearest neighbor, depth first search of the minimum spanning tree, and 2-opt.  Details and pseudocode for each implementation can be found in the following pages.
+% Our research included Google searches regarding TSP algorithms, and readings of various texts such as ~\cite{cormen2009} and ~\cite{skiena2008}.  See the bibliography at the conclusion of this report for a full list of references.  Ultimately, we implemented four different algorithms in Python or C.  We will call these algorithms: braindead tour, nearest neighbor, depth first search of the minimum spanning tree, and 2-opt.  Details and pseudocode for each implementation can be found in the following pages.
 
-\subsection*{Results}
+% \subsection*{Results}
 
-Complete results (runtimes and calculate tours) for each problem instance for each algorithm can be found in the last pages of this document.  We found that certain algorithms were fast and that others provided answers under the 25\% threshold, but it was ultimately our 2-opt algorithm that provided the best combination of the two.  It is for this algorithm that we submitted competition results.
-
-\newpage
-\section*{Algorithm: Braindead Tour}
-\subfile{../Alg00_Braindead_Tour/alg00.tex}
-
-\newpage
-\section*{Algorithm: Depth First Search of Minimum Spanning Tree}
-\subfile{../Alg01_DFS_of_MST/alg01.tex}
-
-\newpage
-\section*{Algorithm: 2-Optimal Tour}
-\subfile{../Alg02_2OPT/alg02.tex}
+% Complete results (runtimes and calculate tours) for each problem instance for each algorithm can be found in the last pages of this document.  We found that certain algorithms were fast and that others provided answers under the 25\% threshold, but it was ultimately our 2-opt algorithm that provided the best combination of the two.  It is for this algorithm that we submitted competition results.
 
 % \newpage
-% \section*{Algorithm: Nearest Neighbor}
-% \subfile{../Alg04_Nearest_Neighbor/alg04.tex}
+% \section*{Algorithm: Braindead Tour}
+% \subfile{../Alg00_Braindead_Tour/alg00.tex}
+
+% \newpage
+% \section*{Algorithm: Depth First Search of Minimum Spanning Tree}
+% \subfile{../Alg01_DFS_of_MST/alg01.tex}
+
+% \newpage
+% \section*{Algorithm: 2-Optimal Tour}
+% \subfile{../Alg02_2OPT/alg02.tex}
+
+\newpage
+\section*{Algorithm: Nearest Neighbor}
+\subfile{../Alg04_Nearest_Neighbor/alg04.tex}
 
 % \newpage
 % \section*{Summary Stats: Example 1}
 % \begin{verbatim}
 % input size:               76
-% optimal tour length:      108159
+% % optimal tour length:      108159
 
-% algorithm:                braindead tour
-% tour length:              150781
-% len/opt len:              1.39
-% runtime(d:hh:mm:ss.ssss): 0:00:00:00.0667
+% % algorithm:                braindead tour
+% % tour length:              150781
+% % len/opt len:              1.39
+% % runtime(d:hh:mm:ss.ssss): 0:00:00:00.0667
 
-% algorithm:                depth first search of minimum spanning true (prim's) 
-% tour length:              139725
-% len/opt len:              1.29
-% runtime(d:hh:mm:ss.ssss): 0:00:00:01.4073
+% % algorithm:                depth first search of minimum spanning true (prim's) 
+% % tour length:              139725
+% % len/opt len:              1.29
+% % runtime(d:hh:mm:ss.ssss): 0:00:00:01.4073
 
-% algorithm:                depth first search of minimum spanning true (kruskal's) 
-% tour length:              141813
-% len/opt len:              1.31
-% runtime(d:hh:mm:ss.ssss): 0:00:00:00.1616
+% % algorithm:                depth first search of minimum spanning true (kruskal's) 
+% % tour length:              141813
+% % len/opt len:              1.31
+% % runtime(d:hh:mm:ss.ssss): 0:00:00:00.1616
 
-% algorithm:                nearest neighbor 
-% tour length:              130921
-% len/opt len:              1.21
-% runtime(d:hh:mm:ss.ssss): 0:00:00:00.2948
+% % algorithm:                nearest neighbor 
+% % tour length:              130921
+% % len/opt len:              1.21
+% % runtime(d:hh:mm:ss.ssss): 0:00:00:00.2948
 
-% algorithm:                2-OPT w/ Nearest Neighbor initial tour
-% tour length:              109067
-% len/opt len:              1.008
-% runtime(d:hh:mm:ss.ssss): 0:00:00:0.0352
+% % algorithm:                2-OPT with Nearest Neighbor initial tour
+% % tour length:              109067
+% % len/opt len:              1.008
+% % runtime(d:hh:mm:ss.ssss): 0:00:00:0.0352
 % \end{verbatim}
 
 % \newpage
