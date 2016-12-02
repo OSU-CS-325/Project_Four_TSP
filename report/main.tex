@@ -25,15 +25,15 @@
 \section*{Summary}
 \subsection*{Problem Statement}
 
-The purpose of the project was research and implement algorithms for the Traveling Salesman Problem.  We were provided 10 total instances (sets of cities and their corresponding x,y coordinates) as were to devise agorithms that could solve for fast and/or optimal tours.  Our goal was to find algorithms for all 10 instances that calculated tour lengths of no worse than 25\% of the optimal tour lengths.  Additionally, for a subset of the instance we were targeting solutions in 3 minutes or less.  For 3 of the (example) instances, we were given the optimal tour lengths.  For the other 7 (competition/test) instances, we approximated the optimal tour lengths using Concorde (DO NOT TURN IT WITHOUT REFERENCING WHERE WE FOUND CONCORDE).
+The purpose of the project was to research and implement algorithms for the Traveling Salesman Problem (TSP). We were provided 10 total problem instances, which consisted of numbered cities and their corresponding x,y coordinates. The goal was to devise agorithms that discover solve tours to visit each city exactly once and return to the originating city. Additionally, these tours should be found quickly (or efficiently). Our goal was to implement algorithms that, for all 10 problem instances, calculated tour lengths of no worse than 25\% of the optimal tour lengths.  Additionally, for a subset of the problem instances, we were to discover feasible solutions in 3 minutes or less.  For three of the problem instances (example problem set), we were given the optimal tour lengths.  For the other seven problem instances (competition problem set), we used Concorde to approximate the optimal tour lengths.\cite{concorde}
 
 \subsection*{Algorithms Researched/Implemented}
 
-Our research included Google searches and readings of various texts such as ~\cite{cormen/2009} and ~\cite{skiena/2008}.  See the bibliography for a full list of references.  Ultimately we ended up implementing four different algorithm in Python or C.  These were an algorithm we called the braindead tour, nearest neighbor, depth first search of the minimum spanning tree, and 2-opt.  Details and pseudocode for each implementation can be found in the following pages.
+Our research included Google searches regarding TSP algorithms, and readings of various texts such as ~\cite{cormen/2009} and ~\cite{skiena/2008}.  See the bibliography at the conclusion of this report for a full list of references.  Ultimately, we implemented four different algorithms in Python or C.  We will call these algorithms: braindead tour, nearest neighbor, depth first search of the minimum spanning tree, and 2-opt.  Details and pseudocode for each implementation can be found in the following pages.
 
 \subsection*{Results}
 
-Complete results (runtimes and calculate tours) for each instance for each algorithm can be found in the last pages of this document.  We found that certain algorithms were fast and that others provided answers under that 25\% threshold, but it was ultimately our 2-opt algorithm that provided the best combination of the two.  It is for this algorithm that we submitted competition results.
+Complete results (runtimes and calculate tours) for each problem instance for each algorithm can be found in the last pages of this document.  We found that certain algorithms were fast and that others provided answers under the 25\% threshold, but it was ultimately our 2-opt algorithm that provided the best combination of the two.  It is for this algorithm that we submitted competition results.
 
 \newpage
 \section*{Algorithm: Braindead Tour}
@@ -78,9 +78,9 @@ len/opt len:              1.21
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.2948
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              112947
-len/opt len:              1.04
-runtime(d:hh:mm:ss.ssss): 0:00:00:0.0213
+tour length:              109067
+len/opt len:              1.008
+runtime(d:hh:mm:ss.ssss): 0:00:00:0.0352
 \end{verbatim}
 
 \newpage
@@ -110,9 +110,9 @@ len/opt len:              1.15
 runtime(d:hh:mm:ss.ssss): 0:00:00:04.4363
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              2741
-len/opt len:              1.06
-runtime(d:hh:mm:ss.ssss): 0:00:00:0.1146
+tour length:              2654
+len/opt len:              1.029
+runtime(d:hh:mm:ss.ssss): 0:00:00:2.2387
 \end{verbatim}
 
 \newpage
@@ -174,9 +174,9 @@ len/opt len:              1.11
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0808
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              ????
-len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+tour length:              5373
+len/opt len:              1.0075
+runtime(d:hh:mm:ss.ssss): 0:00:00:0.0265
 \end{verbatim}
 
 \newpage
@@ -206,16 +206,16 @@ len/opt len:              1.08
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.2705
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              ????
-len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+tour length:              7487
+len/opt len:              1.01
+runtime(d:hh:mm:ss.ssss): 0:00:00:0.1035
 \end{verbatim}
 
 \newpage
 \section*{Summary Stats: Test/Competition 3}
 \begin{verbatim}
 input size:               250
-optimal tour length:      12067
+optimal tour length:      12067 (from Concorde)
 
 algorithm:                braindead tour
 tour length:              123877
@@ -238,20 +238,20 @@ len/opt len:              1.23
 runtime(d:hh:mm:ss.ssss): 0:00:00:03.6776
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              ????
-len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+tour length:              12459
+len/opt len:              1.03
+runtime(d:hh:mm:ss.ssss): 0:00:00:4.0371
 \end{verbatim}
 
 \newpage
 \section*{Summary Stats: Test/Competition 4}
 \begin{verbatim}
 input size:               500
-optimal tour length:      ????
+optimal tour length:      16720 (from Concorde)
 
 algorithm:                braindead tour
 tour length:              247675
-len/opt len:              ????
+len/opt len:              14.81
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0667
 
 algorithm:                depth first search of minimum spanning true (prim's) 
@@ -261,29 +261,29 @@ runtime(d:hh:mm:ss.ssss): DNF
 
 algorithm:                depth first search of minimum spanning true (kruskal's) 
 tour length:              31483
-len/opt len:              ????
+len/opt len:              1.88
 runtime(d:hh:mm:ss.ssss): 0:00:00:01.8154
 
 algorithm:                nearest neighbor 
 tour length:              19711
-len/opt len:              ????
+len/opt len:              1.18
 runtime(d:hh:mm:ss.ssss): 0:00:00:24.9158
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              ????
-len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+tour length:              17318
+len/opt len:              1.04
+runtime(d:hh:mm:ss.ssss): 0:00:00:49.9898
 \end{verbatim}
 
 \newpage
 \section*{Summary Stats: Test/Competition 5}
 \begin{verbatim}
 input size:               1000
-optimal tour length:      ????
+optimal tour length:      22976 (from Concorde)
 
 algorithm:                braindead tour
 tour length:              48053
-len/opt len:              522297
+len/opt len:              2.09
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0687
 
 algorithm:                depth first search of minimum spanning true (prim's) 
@@ -293,29 +293,29 @@ runtime(d:hh:mm:ss.ssss): DNF
 
 algorithm:                depth first search of minimum spanning true (kruskal's) 
 tour length:              44272
-len/opt len:              ????
+len/opt len:              1.93
 runtime(d:hh:mm:ss.ssss): 0:00:00:10.8341
 
 algorithm:                nearest neighbor 
 tour length:              27128
-len/opt len:              ????
+len/opt len:              1.18
 runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              ????
-len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+tour length:              24085
+len/opt len:              1.05
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 \end{verbatim}
 
 \newpage
 \section*{Summary Stats: Test/Competition 6}
 \begin{verbatim}
 input size:               2000
-optimal tour length:      ????
+optimal tour length:      32448 (from Concorde)
 
 algorithm:                braindead tour
 tour length:              1050395
-len/opt len:              ????
+len/opt len:              32.37
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0762
 
 algorithm:                depth first search of minimum spanning true (prim's) 
@@ -325,29 +325,29 @@ runtime(d:hh:mm:ss.ssss): DNF
 
 algorithm:                depth first search of minimum spanning true (kruskal's) 
 tour length:              61594
-len/opt len:              ????
+len/opt len:              1.90
 runtime(d:hh:mm:ss.ssss): 0:00:01:24.4163
 
 algorithm:                nearest neighbor 
 tour length:              39834
-len/opt len:              ????
+len/opt len:              1.23
 runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              ????
-len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+tour length:              34405
+len/opt len:              1.06
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 \end{verbatim}
 
 \newpage
 \section*{Summary Stats: Test/Competition 7}
 \begin{verbatim}
 input size:               5000
-optimal tour length:      ????
+optimal tour length:      Unknown
 
 algorithm:                braindead tour
 tour length:              2580008
-len/opt len:              ????
+len/opt len:              Unknown
 runtime(d:hh:mm:ss.ssss): 0:00:00:00.0938
 
 algorithm:                depth first search of minimum spanning true (prim's) 
@@ -356,19 +356,19 @@ len/opt len:              DNF
 runtime(d:hh:mm:ss.ssss): DNF
 
 algorithm:                depth first search of minimum spanning true (kruskal's) 
-tour length:              DFN
-len/opt len:              DFN
+tour length:              DNF
+len/opt len:              DNF
 runtime(d:hh:mm:ss.ssss): 3 minute limit hit (no results generated)
 
 algorithm:                nearest neighbor 
 tour length:              62110
-len/opt len:              ????
+len/opt len:              Unknown
 runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 
 algorithm:                2-OPT w/ Nearest Neighbor initial tour
-tour length:              ????
-len/opt len:              ????
-runtime(d:hh:mm:ss.ssss): 0:00:00:00.0000
+tour length:              55149
+len/opt len:              Unknown
+runtime(d:hh:mm:ss.ssss): 3 minute limit hit
 \end{verbatim}
 
 \newpage
