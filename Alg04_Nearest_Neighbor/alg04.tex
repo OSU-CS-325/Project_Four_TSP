@@ -16,7 +16,8 @@ We chose nearest neighbor because it is essentially greedy which makes a good ch
 \begin{verbatim}
 Nearest_Neighbor():
     cities = []
-    read data from input file into the cities array  // each city object has id, x and y attributes
+    // each city object has id, x and y attributes
+    read data from input file into the cities array  
 
     adjMatrix=[len(cities)][len(cities)]
     for i = 0 to len(cities) - 1:
@@ -60,7 +61,8 @@ Nearest_Neighbor():
         v = cities[tour_order[len(tour_order) - 1]].id
         this_dist = adjMatrix[u][v]
         if this_dist == -1:
-            this_dist = distance between cities[tour_order[0]] and cities[tour_order[len(tour_order) - 1]]
+            this_dist = distance between cities[tour_order[0]] 
+                        and cities[tour_order[len(tour_order) - 1]]
             adjMatrix[u][v] = this_dist
             adjMatrix[u][v] = this_dist
 

@@ -60,8 +60,10 @@ TSP_2OPT_SWAP_EFFICIENT(adj_matrix, tour, tour_length, num_pts, nodeA, nodeB):
     new_tour[num_pts]
 
     if max_node + 1 < num_pts:
-        removed_path_length = adj_matrix[tour[min_node - 1]][tour[min_node]] + adj_matrix[tour[max_node]][tour[max_node + 1]]
-        added_path_length = adj_matrix[tour[min_node - 1]][tour[max_node]] + adj_matrix[tour[min_node]][tour[max_node + 1]]
+        removed_path_length = adj_matrix[tour[min_node - 1]][tour[min_node]] + 
+            adj_matrix[tour[max_node]][tour[max_node + 1]]
+        added_path_length = adj_matrix[tour[min_node - 1]][tour[max_node]] + 
+            adj_matrix[tour[min_node]][tour[max_node + 1]]
     else:
         removed_path_length = adj_matrix[tour[min_node-1]][tour[min_node]] + 
         adj_matrix[tour[max_node]][tour[0]];
