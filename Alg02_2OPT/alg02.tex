@@ -16,27 +16,6 @@ We decided on this algorithm because it was easy to implement conceptually. Also
 \subsection*{Algorithm Pseudo-code}
 
 \begin{verbatim}
-TSP_TO_ADJMATRIX(Text input file):
-    Reads the input file and returns an adjacency matrix from the resulting graph
-
-TSP_COMPUTE_EUCLID_DIST(x1, y1, x2, y2):
-    dx = x2 - x1
-    dy = y2 - y1
-    dist = sqrt(dx * dx + dy * dy)
-    return round(dist)
-
-TSP_CREATE_IN_ORDER_TOUR(adj_matrix, tour, num_pts):
-    tour[0] = 0
-    num_in_tour = 1
-
-    while num_in_tour < num_pts:
-        tour[num_in_tour] = num_in_tour
-        num_in_tour += 1
-
-    tour_length = TSP_COMPUTE_TOUR_DISTANCE(adj_matrix, tour, num_pts)
-
-    return tour_length
-
 TSP_2OPT_SEARCH(adj_matrix, tour, tour_length, file_name, num_pts):
     improved = true
     old_tour_length = tour_length
@@ -54,16 +33,6 @@ TSP_2OPT_SEARCH(adj_matrix, tour, tour_length, file_name, num_pts):
                     exit_early = true
 
                     write the improved tour to file
-
-TSP_COMPUTE_TOUR_DISTANCE(adj_matrix, tour, num_pts):
-    tour_length = 0
-
-    for i = 0 to num_pts - 1:
-        tour_length += adj_matrix[tour[i]][tour[i + 1]]
-
-    tour_length += adj_matrix[tour[num_pts - 1]][tour[0]]
-
-    return tour_length
 
 TSP_2OPT_SWAP(new_tour, tour, num_pts, nodeA, nodeB):
     min_node = MIN(nodeA, nodeB)
@@ -118,83 +87,6 @@ TSP_2OPT_SWAP_EFFICIENT(adj_matrix, tour, tour_length, num_pts, nodeA, nodeB):
             new_tour_idx++
 
         tour_length -= path_delta
-
-TSP_CREATE_NEAREST_NEIGHBOR_TOUR(adj_matrix, tour, num_pts):
-    num_iter = (num_pts <= 2001) ? num_pts : 10
-
-    cur_tour[num_pts]
-    cur_tour_length = 0
-    best_tour_length = INT_MAX
-    starting_city
-
-    city_in_tour[num_pts]
-    tried_as_starting_city[num_pts]
-
-    num_in_tour = 0
-    prev_city = 0
-
-    closest_distance = INT_MAX
-    closest_city = num_pts
-
-    for i = 0 to num_pts - 1:
-        tried_as_starting_city[i] = 0
-
-    for i = 0 to num_iter - 1:
-        for j = 0 to num_pts - 1:
-            city_in_tour[j] = 0
-
-        closest_distance = INT_MAX
-        closest_city = num_pts
-
-        starting_city = random interval between 0 and num_pts - 1
-        while tried_as_starting_city[starting_city]:
-            starting_city = random interval between 0 and num_pts - 1
-
-        tried_as_starting_city[starting_city] = 1
-        city_in_tour[starting_city] = 1
-
-        cur_tour[0] = starting_city
-        cur_tour_length = 0
-
-        num_in_tour = 1
-
-        while num_in_tour < num_pts:
-            prev_city = cur_tour[num_in_tour - 1]
-
-            for k = 0 to num_pts - 1:
-                if not city_in_tour[k] and adj_matrix[prev_city][k] < closest_distance:
-                    closest_distance = adj_matrix[prev_city][k]
-                    closest_city = k
-
-            cur_tour[num_in_tour] = closest_city
-            cur_tour_length += closest_distance
-            city_in_tour[closest_city] = 1
-            num_in_tour += 1
-
-            closest_distance = INT_MAX
-            closest_city = num_pts
-
-        cur_tour_length += adj_matrix[cur_tour[0]][cur_tour[num_pts - 1]]
-
-        if cur_tour_length < best_tour_length:
-            best_tour_length = cur_tour_length
-            copy the tour array to the cur_tour array
-
-    return best_tour_length
-
-MAIN():
-    input_file = read the text file containing the graph information
-    num_pts = 0
-    adj_matrix = TSP_INPUT_TO_ADJ_MATRIX(input_file, num_pts)
-
-    tour_length = 0
-    tour_order[num_pts]
-
-    tour_length = TSP_CREATE_NEAREST_NEIGHBOR_TOUR(adj_matrix, tour_order, num_pts)
-
-    TSP_2OPT_SEARCH(adj_matrix, tour_order, tour_length, output_filename, num_pts)
-    TSP_WRITE_TOUR_TO_FILE(output_filename, tour_order, num_pts, tour_length)
-    TSP_CLEANUP(adj_matrix)
 \end{verbatim}
 
 \end{document}
