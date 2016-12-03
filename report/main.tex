@@ -12,7 +12,8 @@
 \bibliography{report}
 
 \title{CS 325 Project 4: The Travelling Salesman Problem (TSP)}
-\author{ Kyle Guthrie \\
+\author{Group 12\\
+         Kyle Guthrie \\
          Michael C. Stramel \\
          Alex Miranda
 }
@@ -25,11 +26,11 @@
 \section*{Summary}
 \subsection*{Problem Statement}
 
-The purpose of the project was to research and implement algorithms for the Traveling Salesman Problem (TSP). We were provided 10 total problem instances, which consisted of numbered cities and their corresponding x,y coordinates. The goal was to devise agorithms that discover solve tours to visit each city exactly once and return to the originating city. Additionally, these tours should be found quickly (or efficiently). Our goal was to implement algorithms that, for all 10 problem instances, calculated tour lengths of no worse than 25\% of the optimal tour lengths.  Additionally, for a subset of the problem instances, we were to discover feasible solutions in 3 minutes or less.  For three of the problem instances (example problem set), we were given the optimal tour lengths.  For the other seven problem instances (competition problem set), we used Concorde to approximate the optimal tour lengths.\cite{concorde}
+The purpose of the project was to research and implement algorithms for the Traveling Salesman Problem (TSP). We were provided 10 total problem instances, which consisted of numbered cities and their corresponding x,y coordinates. The goal was to devise agorithms that solve tours to visit each city exactly once and return to the originating city. Additionally, these tours should be found quickly (or efficiently). Our goal was to implement algorithms that, for all 10 problem instances, calculated tour lengths of no worse than 25\% over the optimal tour lengths.  Additionally, for a subset of the problem instances, we were to discover feasible solutions in 3 minutes or less.  For three of the problem instances (example problem set), we were given the optimal tour lengths.  For the other seven problem instances (competition problem set), we used \cite{concorde} to approximate the optimal tour lengths.
 
 \subsection*{Algorithms Researched/Implemented}
 
-Our research included Google searches regarding TSP algorithms, and readings of various texts such as ~\cite{cormen2009} and ~\cite{skiena2008}.  See the bibliography at the conclusion of this report for a full list of references.  Ultimately, we implemented four different algorithms in Python or C.  We will call these algorithms: braindead tour, nearest neighbor, depth first search of the minimum spanning tree, and 2-opt.  Details and pseudocode for each implementation can be found in the following pages.
+Our research included Google searches regarding TSP algorithms, and readings of various texts such as ~\cite{cormen2009} and ~\cite{skiena2008} .  See the bibliography at the conclusion of this report for a full list of references.  Ultimately, we implemented four different algorithms in Python or C.  We will call these algorithms: braindead tour, nearest neighbor, depth first search of the minimum spanning tree, and 2-opt.  Details and pseudocode for each implementation can be found in the following pages.
 
 \subsection*{Results}
 
