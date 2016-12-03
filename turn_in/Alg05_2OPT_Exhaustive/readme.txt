@@ -1,6 +1,6 @@
 to compile:
 
-simple type 'make' at the command line
+simply type 'make' at the command line
 
 usage:
 
